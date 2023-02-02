@@ -1,1 +1,1 @@
-## NodeMCU ESO8266 environment
+## NodeMCU ESP8266 environment
