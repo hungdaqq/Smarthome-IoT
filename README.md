@@ -21,9 +21,9 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+[![Issues][issues-shield]][https://github.com/hungdaqq/Smarthome-IoT/issues]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/hungdaqq/]
 
 
 
@@ -34,19 +34,19 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Smarthome IoT</h3>
 
   <p align="center">
-    project_description
+    My final project of IoT Network and Protocol course (semester 2022.1)
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/hungdaqq/Smarthome-IoT"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/hungdaqq/Smarthome-IoT">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/hungdaqq/Smarthome-IoT/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/hungdaqq/Smarthome-IoT/issues">Request Feature</a>
   </p>
 </div>
 
