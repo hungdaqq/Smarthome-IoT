@@ -7,24 +7,26 @@
 #define WIFI_PASSWORD "28051989"
 
 // Thingsboard device token (auto generated)
-#define TOKEN "116Zl7pNucV6hiLRJLuQ"
+#define TOKEN "lt87AUTSXFbczDWTghaC"
 
 // NODEMCU pinout, use for remote GPIO controlling
-#define GPIO1 0
-#define GPIO2 2
-#define GPIO1_PIN 3
-#define GPIO2_PIN 5
+#define GPIO1 D1
+#define GPIO2 D2
+#define GPIO1_PIN 1
+#define GPIO2_PIN 2
 
-#define BUTTON D2 //D2(gpio4)
+#define BUTTON1 D3
+#define BUTTON2 D4
 
 //Let's say you have your push button on pin 4
-int switchState = 0; // actual read value from pin4
-int oldSwitchState = 0; // last read value from pin4
-int lightsOn = 0; // is the switch on = 1 or off = 0
-char thingsboardServer[] = "demo.thingsboard.io";
+// int switchState = 0; // actual read value from pin4
+// int oldSwitchState = 0; // last read value from pin4
+// int lightsOn = 0; // is the switch on = 1 or off = 0
+
+// Thingsboard Edge on-premise local IP
+char thingsboardServer[] = "192.168.1.13";
 
 WiFiClient wifiClient;
-
 PubSubClient client(wifiClient);
 
 int status = WL_IDLE_STATUS;
@@ -46,7 +48,6 @@ String get_gpio_status() {
 }
 
 void set_gpio_status(int pin, boolean enabled) {
-
   if (pin == GPIO1_PIN) {
     // Output GPIOs state
     digitalWrite(GPIO1, enabled ? HIGH : LOW); // NodeMCU is backwards, Arduino is HIGH : LOW
@@ -55,7 +56,6 @@ void set_gpio_status(int pin, boolean enabled) {
   }
   
   if (pin == GPIO2_PIN) {
-    
     // Output GPIOs state
     digitalWrite(GPIO2, enabled ? HIGH : LOW); // NodeMCU is backwards, Arduino is HIGH : LOW
     // Update GPIOs state
@@ -163,7 +163,8 @@ void setup() {
   // Set output mode for all GPIO pins
   pinMode(GPIO1, OUTPUT);
   pinMode(GPIO2, OUTPUT);
-  pinMode(BUTTON, INPUT);
+  pinMode(BUTTON1, INPUT);
+  pinMode(BUTTON2, INPUT);
   delay(10);
   
   InitWiFi();
@@ -175,18 +176,18 @@ void loop() {
   if ( !client.connected() ) {
     reconnect();
   }
-  switchState = digitalRead(BUTTON); // read the pushButton State
-  if (switchState != oldSwitchState) {
-    oldSwitchState = switchState;
-  }
-  if (switchState == HIGH){
-    lightsOn = !lightsOn;
-  }
-  if(lightsOn){
-    digitalWrite(GPIO1, HIGH);
-  }
-  else{
-    digitalWrite(GPIO1, HIGH);
-  }  
-  client.loop();
+  // switchState = digitalRead(BUTTON1); // read the pushButton State
+  // if (switchState != oldSwitchState) {
+  //   oldSwitchState = switchState;
+  // }
+  // if (switchState == HIGH){
+  //   lightsOn = !lightsOn;
+  // }
+  // if(lightsOn){
+  //   digitalWrite(GPIO1, HIGH);
+  // }
+  // else{
+  //   digitalWrite(GPIO1, HIGH);
+  // }  
+  // client.loop();
 }
