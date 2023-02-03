@@ -1,2 +1,1 @@
-# Smarthome-IoT
- This is my final project of IoT Network and Protocol course (semester 2022.1)
+## NodeMCU ESP8266 environment
