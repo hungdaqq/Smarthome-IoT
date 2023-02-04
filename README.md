@@ -53,7 +53,9 @@
 ## About The Project
 
 <p align="justify">
-This project is aimed at creating a smart home system that can control various devices in a house using internet connectivity. The system will allow the user to remotely control the lights, temperature, and appliances in their home, and receive real-time updates about their status.
+This project is aimed at creating a smart home system that can control various devices in a house using internet connectivity. The system will allow the user to remotely control the lights, temperature, and appliances in their home, and receive real-time updates about their status. Below are the project requirements:
+  - MQTT
+  - HTTP
 </p>
 
 <!-- GETTING STARTED -->
@@ -70,7 +72,7 @@ Before getting started with the project, you will need the following:
 | Hardware | Software |
 |----------|----------|
 |A Raspberry Pi or PC or any other IoT device that runs on Linux.|Raspbian Buster installed on your Raspberry Pi or Debian (Ubuntu) installed on your PC.|
-|NodeMCU ESP8266 for WiFi communication and devices you want to control (lights, temperature sensors, etc.).|Basic understanding of programming micro controller in C/C++.|
+|NodeMCU ESP8266 for WiFi communication and devices you want to control (lights, temperature sensors, etc.).|Basic understanding of programming micro controller in C/C++ and IoT network protocols.|
 |A router to create a wireless local area network, with an internet connection to connect your Raspberry Pi to the internet.|An internet browser and mobile applications to access the user interface of the smart home system.
 
 ### Installation
