@@ -5,7 +5,7 @@
     <img src="images/smarthome.jpg" alt="Logo" width="800" height="420">
   </a>
 
-<h3 align="center">Smarthome IoT</h3>
+<h3 align="center">Smart Home IoT</h3>
 
   <p align="center">
     My final project of IoT Network and Protocol course (semester 2022.1)
