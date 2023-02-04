@@ -55,9 +55,7 @@
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-The Smarthome IoT project refers to the integration of internet-connected devices into a single system to control and automate various aspects of a home, such as lighting, environmental controlling, and security. This project aims to make homes more convenient, energy-efficient, and secure by allowing homeowners to monitor and control their homes remotely using a smartphone or other connected device. With the increasing popularity of smart homes, the market for Smarthome IoT solutions is rapidly growing and offers a range of benefits to homeowners, including increased convenience, reduced energy costs, and improved home security.
-
+<p align="justify"> The Smarthome IoT project refers to the integration of internet-connected devices into a single system to control and automate various aspects of a home, such as lighting, environmental controlling, and security. This project aims to make homes more convenient, energy-efficient, and secure by allowing homeowners to monitor and control their homes remotely using a smartphone or other connected device. </p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
