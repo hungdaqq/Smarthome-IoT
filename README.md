@@ -65,14 +65,15 @@ To get a local copy up and running follow these simple example steps.
 Before getting started with the project, you will need the following:
 | Hardware | Software |
 |----------|----------|
-|- A Raspberry Pi or any other IoT device that runs on Linux.  
-- A router to create a wireless local area network, with an internet connection to connect your Raspberry Pi to the internet.| - Raspbian or any other supported Linux distribution installed on your Raspberry Pi.
+|A Raspberry Pi or any other IoT device that runs on Linux.|Raspbian or any other supported Linux distribution installed on your Raspberry Pi.
+|A Raspberry Pi or any other IoT device that runs on Linux.|Basic understanding of programming in Python, C/C++.
+|A router to create a wireless local area network, with an internet connection to connect your Raspberry Pi to the internet.|An internet browser, Mobile applications to access the user interface of the smart home system.
+|Devices you want to control (lights, temperature sensors, etc.).|
 
 
 #### Hardware
 - A Raspberry Pi or any other IoT device that runs on Linux.
 - ESP8266 Micro Controller for WiFi communication.
-- Relays, transistors, or any other electronics components needed to control the devices in your home.
 - A breadboard and jumpers for connecting the components.
 - Devices you want to control (lights, temperature sensors, etc.).
 #### Software
