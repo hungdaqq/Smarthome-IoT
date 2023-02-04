@@ -76,7 +76,7 @@ Before getting started with the project, you will need the following:
 |----------|----------|
 |A Raspberry Pi or PC or any other IoT device that runs on Linux.|Raspbian Buster installed on your Raspberry Pi or Debian (Ubuntu) installed on your PC.|
 |NodeMCU ESP8266 for WiFi communication and devices you want to control (lights, temperature sensors, etc.).|Basic understanding of programming micro controller in C/C++ and IoT network protocols.|
-|A router to create a wireless local area network, with an internet connection to connect your Raspberry Pi to the internet.|An internet browser and mobile applications to access the user interface of the smart home system.
+|A router to create a wireless local area network, with an internet connection to connect your Raspberry Pi to the internet.|An internet browser and mobile application to access the user interface of the smart home system.
 
 ### Installation
 
@@ -85,7 +85,8 @@ Before getting started with the project, you will need the following:
    https://github.com/hungdaqq/Smarthome-IoT.git
    ```
 2. Create a Thingsboard account at https://demo.thingsboard.io/ and login to use Thingsboard Live Demo server.
-3. Follow the instructions to install [Thingsboard Edge CE](https://thingsboard.io/docs/user-guide/install/edge/installation-options/) and [Thingsboard IoT Gateway](https://thingsboard.io/docs/iot-gateway/installation/) on your Raspberry Pi or PC.
+3. Follow the instructions to install [Thingsboard Edge CE](https://thingsboard.io/docs/user-guide/install/edge/installation-options/) and [Thingsboard IoT Gateway](https://thingsboard.io/docs/iot-gateway/installation/) on your Raspberry Pi or PC. 
+4. Get and install the ThingsBoardLive on App Store or Google Play.
 5. Please refer to [ESP8266](https://github.com/hungdaqq/Smarthome-IoT/tree/main/ESP8266) for setting up micro controllers programming evironment, [Thingsboard]() for ThingsBoard configuration and [Features]() for the smart home features.
 
 <!-- USAGE EXAMPLES -->
