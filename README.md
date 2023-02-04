@@ -63,10 +63,10 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 Before getting started with the project, you will need the following:
-| Hardware | Software | Additional Requirements
-|----------|----------|------------------------
-|- A Raspberry Pi or any other IoT device that runs on Linux.|- Raspbian or any other supported Linux distribution installed on your Raspberry Pi.
-|- A router to create a wireless local area network, with an internet connection to connect your Raspberry Pi to the internet.
+| Hardware | Software |
+|----------|----------|
+|- A Raspberry Pi or any other IoT device that runs on Linux.
+- A router to create a wireless local area network, with an internet connection to connect your Raspberry Pi to the internet.| - Raspbian or any other supported Linux distribution installed on your Raspberry Pi.
 
 
 #### Hardware
