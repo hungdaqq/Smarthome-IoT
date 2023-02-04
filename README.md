@@ -96,7 +96,9 @@ Before getting started with the project, you will need the following:
    ```sh
    sudo service tb-edge start
    ```
-2. Access the user interface by opening a web browser and navigating to https://demo.thingsboard.io/home
+2. Access the user interface by opening a web browser and navigating to https://demo.thingsboard.io/home or using ThingsBoardLive mobile application.
+3. Use the interface to control the devices and other features in your home.
+
 
 <!-- ROADMAP -->
 ## Roadmap and Future work
