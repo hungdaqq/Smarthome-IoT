@@ -133,6 +133,4 @@ Project Link: [https://github.com/hungdaqq/Smarthome-IoT/](https://github.com/hu
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+This project would not have been possible without the support and resources provided by the open-source community. We would like to extend our gratitude to all the developers and organizations who have contributed to the development of the libraries and tools used in this project.
