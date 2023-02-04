@@ -103,8 +103,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Air quality monitoring (inside with sensors and outside with OpenWeather API)
 - [x] Light and Household applicances control
 - [x] Alarms
-- [x] Internal control and internet-based control
-- [ ] monitoring 
+- [ ] Power usage and charging monitoring
+- [ ] Devices claming (QR code)
 
 See the [open issues](https://github.com/hungdaqq/Smarthome-IoT/issues) for a full list of proposed features (and known issues).
 
