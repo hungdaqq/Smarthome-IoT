@@ -80,7 +80,7 @@ Before getting started with the project, you will need the following:
 
 ### Installation
 
-1. Clone the repo.
+1. Clone the repo:
    ```sh
    https://github.com/hungdaqq/Smarthome-IoT.git
    ```
