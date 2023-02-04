@@ -75,15 +75,13 @@ Before getting started with the project, you will need the following:
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   https://github.com/hungdaqq/Smarthome-IoT.git
    ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
+2. Create Thingsboard Demo account at https://demo.thingsboard.io/home
+3. Follow the [instructions](https://thingsboard.io/docs/user-guide/install/edge/installation-options/) to install Thingsboard Edge CE on your Raspberry Pi or PC.:  
+
 4. Enter your API in `config.js`
    ```js
    const API_KEY = 'ENTER YOUR API';
