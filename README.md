@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/hungdaqq/Smarthome-IoT">
     <img src="images/smarthome.jpg" alt="Logo" width="800" height="420">
   </a>
 
@@ -51,7 +51,12 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
+<br />
+<div align="center">
+  <a href="https://github.com/hungdaqq/Smarthome-IoT">
+    <img src="images/diagram.png" alt="Logo" width="800" height="630">
+  </a>
+  
 <p align="justify"> This project is aimed at creating a smart home system that can control various devices in a house using internet connectivity. The system will allow the user to remotely control the lights, temperature, and appliances in their home, and receive real-time updates about their status.
  </p>
 
