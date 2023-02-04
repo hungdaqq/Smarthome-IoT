@@ -122,7 +122,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@dqhmc](https://www.facebook.com/dqhmc) - hungdaqq@gmail.com
+Quang Hung Dang - [@dqhmc](https://www.facebook.com/dqhmc) - hungdaqq@gmail.com
 
 Project Link: [https://github.com/hungdaqq/Smarthome-IoT/](https://github.com/hungdaqq/Smarthome-IoT/)
 
