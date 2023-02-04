@@ -79,9 +79,10 @@ Before getting started with the project, you will need the following:
    ```sh
    https://github.com/hungdaqq/Smarthome-IoT.git
    ```
-2. Create Thingsboard demo account at https://demo.thingsboard.io/home.
+2. Create Thingsboard account at https://demo.thingsboard.io/home to use Thingsboard Live Demo server.
 3. Follow the [instructions](https://thingsboard.io/docs/user-guide/install/edge/installation-options/) to install Thingsboard Edge CE on your Raspberry Pi or PC.
-4. Please refer to [ESP8266](https://github.com/hungdaqq/Smarthome-IoT/tree/main/ESP8266) for setting up micro controllers programming evironment, [Thingsboard]() for ThingsBoard configuration and [Features]() for the smart home features.
+4. Follow the [instructions](https://thingsboard.io/docs/iot-gateway/installation/) to install Thingsboard IoT Gateway on your Raspberry Pi or PC.
+5. Please refer to [ESP8266](https://github.com/hungdaqq/Smarthome-IoT/tree/main/ESP8266) for setting up micro controllers programming evironment, [Thingsboard]() for ThingsBoard configuration and [Features]() for the smart home features.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
