@@ -69,19 +69,6 @@ Before getting started with the project, you will need the following:
 |NodeMCU ESP8266 for WiFi communication and devices you want to control (lights, temperature sensors, etc.).|Basic understanding of micro controller and programming in C/C++.|
 |A router to create a wireless local area network, with an internet connection to connect your Raspberry Pi to the internet.|An internet browser and mobile applications to access the user interface of the smart home system.
 
-
-#### Hardware
-- A Raspberry Pi or any other IoT device that runs on Linux.
-- ESP8266 Micro Controller for WiFi communication.
-- A breadboard and jumpers for connecting the components.
-- Devices you want to control (lights, temperature sensors, etc.).
-#### Software
-- Raspbian or any other supported Linux distribution installed on your Raspberry Pi.
-- Basic understanding of programming in Python, C/C++.
-#### Additional Requirements
-- A router to create a wireless local area network, with an internet connection to connect your Raspberry Pi to the internet.
-- An internet browser, Mobile applications to access the user interface of the smart home system.
-
 ### Installation
 
 1. Get a free API Key at [https://example.com](https://example.com)
