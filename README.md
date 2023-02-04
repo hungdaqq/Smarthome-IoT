@@ -58,7 +58,7 @@ This project is aimed at creating a smart home system that can control various d
 
 - About protocols: MQTT or CoAP for the devices to the Gateway/Edge and HTTP for the Gateway/Edge to the Cloud server.
 - Sensor devices must be operated in power-saving mode.
-- Mobile application or browser for the user interface.
+- User interface: Mobile application or browser.
 - Internal control and Internet-based control.
 
 <!-- GETTING STARTED -->
