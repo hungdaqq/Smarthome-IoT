@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="images/smarthome.jpg" alt="Logo" width="1024" height="536">
+    <img src="images/smarthome.jpg" alt="Logo" width="512" height="268">
   </a>
 
 <h3 align="center">Smarthome IoT</h3>
