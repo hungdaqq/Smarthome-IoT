@@ -81,7 +81,7 @@ Before getting started with the project, you will need the following:
    ```
 2. Create Thingsboard demo account at https://demo.thingsboard.io/home.
 3. Follow the [instructions](https://thingsboard.io/docs/user-guide/install/edge/installation-options/) to install Thingsboard Edge CE on your Raspberry Pi or PC.
-4. Please refer to [ESP8266](https://github.com/hungdaqq/Smarthome-IoT/tree/main/ESP8266) for setting up micro controllers programming evironment, [Thingsboard] for ThingsBoard configuration and [Features] for the smart home features.
+4. Please refer to [ESP8266](https://github.com/hungdaqq/Smarthome-IoT/tree/main/ESP8266) for setting up micro controllers programming evironment, [Thingsboard]() for ThingsBoard configuration and [Features]() for the smart home features.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
