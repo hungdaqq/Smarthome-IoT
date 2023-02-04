@@ -66,7 +66,7 @@ Before getting started with the project, you will need the following:
 | Hardware | Software |
 |----------|----------|
 |A Raspberry Pi or any other IoT device that runs on Linux.|Raspbian or any other supported Linux distribution installed on your Raspberry Pi.|
-|NodeMCU ESP8266 for WiFi communication and devices you want to control (lights, temperature sensors, etc.).|Basic understanding of micro controller and programming in C/C++.|
+|NodeMCU ESP8266 for WiFi communication and devices you want to control (lights, temperature sensors, etc.).|Basic understanding of programming micro controller in C/C++.|
 |A router to create a wireless local area network, with an internet connection to connect your Raspberry Pi to the internet.|An internet browser and mobile applications to access the user interface of the smart home system.
 
 ### Installation
