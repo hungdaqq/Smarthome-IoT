@@ -56,7 +56,7 @@
 This project is aimed at creating a smart home system that can control various devices in a house using internet connectivity. The system will allow the user to remotely control the lights, temperature, and appliances in their home, and receive real-time updates about their status. Below are the project 
 </p>
 
-- About protocols: MQTT or CoAP for devices to Gateway/Edge and HTTP for Gateway/Edge to Cloud server.
+- About protocols: MQTT or CoAP for the devices to the Gateway/Edge and HTTP for the Gateway/Edge to the Cloud server.
 - Sensor devices must be operated in power-saving mode.
 - Mobile application or browser for the user interface.
 - Internal control and Internet-based control.
