@@ -54,7 +54,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 <p align="justify"> This project is aimed at creating a smart home system that can control various devices in a house using internet connectivity. The system will allow the user to remotely control the lights, temperature, and appliances in their home, and receive real-time updates about their status.
  </p>
 
@@ -71,15 +70,13 @@ Before getting started with the project, you will need the following:
 - ESP8266 Micro Controller for WiFi communication.
 - Relays, transistors, or any other electronics components needed to control the devices in your home.
 - A breadboard and jumpers for connecting the components.
-- Devices you want to control (lights, temperature sensors, etc.)
-### Software
-Raspbian or any other supported Linux distribution installed on your Raspberry Pi
-Python 3 and pip installed on your Raspberry Pi
-Basic understanding of electronics and how to connect components to the Raspberry Pi
-Basic understanding of programming in Python
-Additional Requirements
-A router with an internet connection to connect your Raspberry Pi to the internet
-An internet browser to access the user interface of the smart home system
+- Devices you want to control (lights, temperature sensors, etc.).
+#### Software
+- Raspbian or any other supported Linux distribution installed on your Raspberry Pi.
+- Basic understanding of programming in Python, C/C++.
+#### Additional Requirements
+- A router to create a wireless local area network, with an internet connection to connect your Raspberry Pi to the internet.
+- An internet browser, Mobile applications to access the user interface of the smart home system.
 
 ### Installation
 
