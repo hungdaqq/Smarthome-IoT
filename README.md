@@ -92,12 +92,11 @@ Before getting started with the project, you will need the following:
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. Start the system by running the main script:
+1. Start Edge service by running the main script:
    ```sh
    sudo service tb-edge start
    ```
-
-
+2. Access the user interface by opening a web browser and navigating to https://demo.thingsboard.io/home
 
 <!-- ROADMAP -->
 ## Roadmap and Future work
