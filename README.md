@@ -91,7 +91,7 @@ Before getting started with the project, you will need the following:
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. Start Edge service by running the main script:
+1. Start Edge service by running the script:
    ```sh
    sudo service tb-edge start
    ```
