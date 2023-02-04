@@ -94,9 +94,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap and Future work
 
-- [ ] Temperature monitoring
-- [ ] Light and Household applicances control
-- [ ] Alarms
+- [x] Temperature monitoring
+- [x] Light and Household applicances control
+- [x] Alarms
 
 See the [open issues](https://github.com/hungdaqq/Smarthome-IoT/issues) for a full list of proposed features (and known issues).
 
