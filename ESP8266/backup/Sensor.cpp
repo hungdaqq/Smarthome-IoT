@@ -10,6 +10,7 @@ extern "C" {
 #define WIFI_AP "MINH MUP_2.4G"
 #define WIFI_PASSWORD "28051989"
 
+// This device access token
 #define TOKEN "Kitchen_Temperature_Sensor"
 
 // DS18B20 sensor pinout
@@ -29,12 +30,13 @@ const int green = 20;
 
 // unsigned long lastSend;
 
-// Thingsboard Sever address. 
+// ThingsBoard server instance.
 // Use "demo.thingsboard.io" to send data directly to Live Demo server
 // Use local IP Address of TB Edge to send data to Edge database
 char thingsboardServer[] = "192.168.1.13";
-
+// Initialize ThingsBoard client
 WiFiClient wifiClient;
+// Initialize ThingsBoard instance
 ThingsBoard tb(wifiClient);
  
 int status = WL_IDLE_STATUS;

@@ -7,7 +7,7 @@
 #define WIFI_PASSWORD "28051989"
 
 // Thingsboard device token (auto generated)
-#define TOKEN "lt87AUTSXFbczDWTghaC"
+#define TOKEN "GPIO_Control"
 
 // NODEMCU pinout, use for remote GPIO controlling
 #define GPIO1 D1
@@ -59,8 +59,7 @@ void set_gpio_status(int pin, boolean enabled) {
     // Output GPIOs state
     digitalWrite(GPIO2, enabled ? HIGH : LOW); // NodeMCU is backwards, Arduino is HIGH : LOW
     // Update GPIOs state
-    gpioState[1] = enabled;
-    
+    gpioState[1] = enabled; 
   }
 }
 
@@ -189,5 +188,5 @@ void loop() {
   // else{
   //   digitalWrite(GPIO1, HIGH);
   // }  
-  // client.loop();
+  client.loop();
 }
