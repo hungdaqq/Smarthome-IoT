@@ -29,12 +29,14 @@ const int green = 20;
 
 // unsigned long lastSend;
 
-// Thingsboard Sever address
+// Thingsboard Sever address. 
+// Use "demo.thingsboard.io" to send data directly to Live Demo server
+// Use local IP Address of TB Edge to send data to Edge database
 char thingsboardServer[] = "192.168.1.13";
 
 WiFiClient wifiClient;
 ThingsBoard tb(wifiClient);
-
+ 
 int status = WL_IDLE_STATUS;
 
 void setState(char STATE){
@@ -58,6 +60,11 @@ void setState(char STATE){
     digitalWrite(YELLOW, LOW);
     digitalWrite(GREEN, LOW);       
   }
+  else if (STATE == 'a') {
+    digitalWrite(RED, HIGH);
+    digitalWrite(YELLOW, HIGH);
+    digitalWrite(GREEN, HIGH);       
+  }
 }
 
 void getAndSendTemperatureAndHumidityData() {
@@ -70,7 +77,7 @@ void getAndSendTemperatureAndHumidityData() {
   // Check if any reads failed and exit early (to try again).
   if (isnan(temperature)) {
     Serial.println("Failed to read from sensor!");
-    setState('r');
+    setState('a');
   }
   else if (temperature <= green){
     setState('g');
@@ -139,7 +146,7 @@ void reconnectTB() {
     } 
     else {
       Serial.print( "[FAILED]" );
-      Serial.println( " : retrying in 5 seconds]" );
+      Serial.println( " : retrying in 5 seconds." );
       // Wait 5 seconds before retrying
       for (int i = 0; i < 5; i++){
         // RED LED blinks in 5 senconds
@@ -165,10 +172,11 @@ void setup() {
   delay(10);
   // Initialize WiFi connection
   InitWiFi();
-  // Setting auto-sleep mode: MODEM_SLEEP_T
+  // Setting auto-sleep type: LIGHT_SLEEP_T (or MODEM_SLEEP_T)
   wifi_set_sleep_type(LIGHT_SLEEP_T);
+  // In Light sleep mode CPU: Pending, WiFi: OFF, current: 0.4 mA
+  // In Modem sleep mode CPU: ON, WiFi: OFF, current: 15 mA
 }
-
 
 void loop() {
   // Try to reconnect to Thingsboard Sever
