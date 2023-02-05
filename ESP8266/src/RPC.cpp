@@ -22,11 +22,12 @@ int status = WL_IDLE_STATUS;
 
 // Array with LEDs that should be lit up one by one
 uint8_t leds[] = {D1, D2, D3, D4, D5};
+size_t leds_size = COUNT_OF(leds);
 
 // Main application loop delay
 int quant = 20;
 // Initial period of LED cycling.
-int led_delay = 1000;
+int led_delay = 10000;
 // Time passed after LED was turned ON, milliseconds.
 int led_passed = 0;
 // Set to true if application is subscribed for the RPC messages.
@@ -121,7 +122,7 @@ void setup() {
   Serial.begin(112500);
   InitWiFi();
   // Pinconfig
-  for (size_t i = 0; i < COUNT_OF(leds); ++i) {
+  for (size_t i = 0; i < leds_size; ++i) {
     pinMode(leds[i], OUTPUT);
   }
 }
@@ -145,7 +146,7 @@ void loop() {
     // Turn off current LED
     digitalWrite(leds[current_led], LOW);
     led_passed = 0;
-    current_led = current_led >= 4 ? 0 : (current_led + 1);
+    current_led = current_led >= (leds_size-1) ? 0 : (current_led + 1);
     // Turn on next LED in a row
     digitalWrite(leds[current_led], HIGH);
   }
