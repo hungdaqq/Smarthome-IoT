@@ -55,10 +55,11 @@
 <p align="justify">
 This project is aimed at creating a smart home system that can control various devices in a house using internet connectivity. The system will allow the user to remotely control the lights, temperature, and appliances in their home, and receive real-time updates about their status. Below are the project requirements: </p>
 
-- About protocols: MQTT or CoAP for the devices to the Gateway/Edge and HTTP for the Gateway/Edge to the Cloud server.
+- About networking protocols: MQTT or CoAP for the devices to the Gateway/Edge and HTTP for the Gateway/Edge to the Cloud server.
+- Device communication: WiFi.
 - Sensor devices must be operated in power-saving mode.
 - User interface: Mobile application or browser.
-- Internal control and Internet-based control.
+- Intranet control and Internet-based control.
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -85,7 +86,7 @@ Before getting started with the project, you will need the following:
    ```
 2. Create a Thingsboard account at https://demo.thingsboard.io/ and login to use Thingsboard Live Demo server.
 3. Follow the instructions to install [Thingsboard Edge CE](https://thingsboard.io/docs/user-guide/install/edge/installation-options/) and [Thingsboard IoT Gateway](https://thingsboard.io/docs/iot-gateway/installation/) on your Raspberry Pi or PC. 
-4. Get and install the ThingsBoardLive on App Store or Google Play.
+4. Get and install the ThingsBoardLive on [App Store](https://apps.apple.com/us/app/thingsboard-live/id1594355695) or [Google Play](https://play.google.com/store/apps/details?id=org.thingsboard.demo.app&hl=vi&gl=US).
 5. Please refer to [ESP8266](https://github.com/hungdaqq/Smarthome-IoT/tree/main/ESP8266) for setting up micro controllers programming evironment and [Features]() for ThingsBoard configuration as well as connecting the electronics components in accordance with the hardware schema.
 
 <!-- USAGE EXAMPLES -->
