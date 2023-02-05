@@ -12,15 +12,14 @@ extern "C" {
 
 #define TOKEN "Kitchen_Temperature_Sensor"
 
-// DS18B20
+// DS18B20 sensor pinout
 OneWire oneWire(D4);
 DallasTemperature sensors(&oneWire);
 
-// LED display
+// LED module pinout: TM1637Display display(CLK,DIO);
 TM1637Display display(D1,D2);
-// ShiftDisplay display(D2,D1,D3,COMMON_CATHODE,4);
 
-// Threshold
+// Temperature threshold
 #define RED D5
 #define YELLOW D6
 #define GREEN D7
@@ -30,6 +29,7 @@ const int green = 20;
 
 // unsigned long lastSend;
 
+// Thingsboard Sever address
 char thingsboardServer[] = "192.168.1.13";
 
 WiFiClient wifiClient;
@@ -81,10 +81,9 @@ void getAndSendTemperatureAndHumidityData() {
   else {
     setState('r');
   }
-  // Display
+  // Display on LED module
   display.showNumberDec(round(temperature*10));
-
-  // Serial print
+  // Print temperature on Serial port
   Serial.print("Temperature: ");
   Serial.print(temperature);
   Serial.println(" *C.");
@@ -95,12 +94,14 @@ void getAndSendTemperatureAndHumidityData() {
 void reconnectWiFi() {
   WiFi.begin(WIFI_AP, WIFI_PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
+    // RED LED blinks when WiFi disconnected
     delay(500);
     setState('r');
     Serial.print(".");
     delay(500);
     setState('n');
   }
+  // GREEN LED blinks 3 times when WiFi connected
   for (int i = 0; i < 3; i++){
     delay(500);
     setState('g');
@@ -109,13 +110,15 @@ void reconnectWiFi() {
   }
   Serial.println("");
   Serial.print("WiFi connected, IP address: "); 
+  // Show IP of this device
   Serial.println(WiFi.localIP());
 }
 
 void InitWiFi() {
+  // Initialize WiFi mode: STA-Station as a prerequisite for automatically activating sleep mode.
   WiFi.mode(WIFI_STA);
   Serial.println("Connecting to AP ...");
-  // attempt to connect to WiFi network
+  // Attempt to connect to WiFi network
   reconnectWiFi();
 }
 
@@ -139,6 +142,7 @@ void reconnectTB() {
       Serial.println( " : retrying in 5 seconds]" );
       // Wait 5 seconds before retrying
       for (int i = 0; i < 5; i++){
+        // RED LED blinks in 5 senconds
         delay(500);
         setState('r');
         delay(500);
@@ -150,28 +154,19 @@ void reconnectTB() {
 
 void setup() {
   Serial.begin(115200);
-
   // Pinout LED to control
   pinMode(GREEN, OUTPUT);
   pinMode(RED, OUTPUT);
   pinMode(YELLOW, OUTPUT);
-
-  // Setting LED 7 Digit display module's brightness. Adjustment range from 0 to 7
+  // Adjusting the brightness of 4 Digit 7 segment display module. Range: 0 to 7
   display.setBrightness(4);
-
   // Start the temperature sensor
   sensors.begin();
   delay(10);
-
   // Initialize WiFi connection
   InitWiFi();
-  /* Setting auto-sleep mode: MODEM_SLEEP_T. In Modem-sleep mode, ESP8266 will close the
-  Wi-Fi module circuit between the two DTIM Beacon intervals in order to save power. 
-  ESP8266 will be automatically woken up before the next Beacon arrival. 
-  The sleep time is decided by the DTIM Beacon interval time of the router. 
-  During sleep, ESP8266 can stay connected to the Wi-Fi and receive the interactive
-  information from a mobile phone or server. */
-  wifi_set_sleep_type(MODEM_SLEEP_T);
+  // Setting auto-sleep mode: MODEM_SLEEP_T
+  wifi_set_sleep_type(LIGHT_SLEEP_T);
 }
 
 
@@ -186,7 +181,7 @@ void loop() {
   // WiFi.disconnect();
   // WiFi.forceSleepBegin();
 
-  // Auto-sleep will be enabled if the WiFi is free for >10 senconds.
+  // Auto Light sleep will be enabled if the WiFi and CPU is free for >10 senconds (tested).
   delay(200e3);
   tb.loop();
 }
