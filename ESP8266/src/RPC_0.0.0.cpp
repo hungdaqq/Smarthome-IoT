@@ -20,20 +20,23 @@ ThingsBoard tb(wifiClient);
 // the Wifi radio's status
 int status = WL_IDLE_STATUS;
 
+uint8 light = D1;
 // Array with LEDs that should be lit up one by one
-uint8_t leds[] = {D1, D2, D3, D4, D5};
-size_t leds_size = COUNT_OF(leds);
+// uint8_t leds[] = {D1, D2, D3, D4, D5};
+// size_t leds_size = COUNT_OF(leds);
 
 // Main application loop delay
 int quant = 20;
 // Initial period of LED cycling.
-int led_delay = 10000;
+int led_delay = 10000; // max 10k ms, min 25 ms
 // Time passed after LED was turned ON, milliseconds.
 int led_passed = 0;
 // Set to true if application is subscribed for the RPC messages.
 bool subscribed = false;
 // LED number that is currenlty ON.
 int current_led = 0;
+
+bool state = false;
 
 // Processes function for RPC call "setValue"
 // RPC_Data is a JSON variant, that can be queried using operator[]
@@ -122,9 +125,7 @@ void setup() {
   Serial.begin(112500);
   InitWiFi();
   // Pinconfig
-  for (size_t i = 0; i < leds_size; ++i) {
-    pinMode(leds[i], OUTPUT);
-  }
+  pinMode(light, OUTPUT);
 }
 
 // Main application loop
@@ -132,25 +133,21 @@ void loop() {
   delay(quant);
   led_passed += quant;
   if (led_delay == 1) {
-    for (size_t i = 0; i < COUNT_OF(leds); ++i) {
-      digitalWrite(leds[i], HIGH);
-    }
+    digitalWrite(light, HIGH);
   }
   else if(led_delay == 0) {
-    for (size_t i = 0; i < COUNT_OF(leds); ++i) {
-      digitalWrite(leds[i], LOW);
-    }
+    digitalWrite(light, LOW);
   }    
   else if (led_passed > led_delay) {
-    // Check if next LED should be lit up
-    // Turn off current LED
-    digitalWrite(leds[current_led], LOW);
+    if (state) {
+      digitalWrite(light, HIGH);
+    }
+    else {
+      digitalWrite(light, LOW);
+    }
+    state = !state;
     led_passed = 0;
-    current_led = current_led >= (leds_size-1) ? 0 : (current_led + 1);
-    // Turn on next LED in a row
-    digitalWrite(leds[current_led], HIGH);
   }
-
   // Reconnect to ThingsBoard, if needed
   if (!tb.connected()) {
     subscribed = false;
