@@ -37,6 +37,8 @@ bool subscribed = false;
 // LED number that is currenlty ON.
 int current_led = 0;
 
+bool setDelay = false;
+bool blink = false;
 bool lightState = false;
 int switchState = 0; // actual read value from pin4
 int oldSwitchState = 0; // last read value from pin4
@@ -50,6 +52,7 @@ RPC_Response processDelayChange(const RPC_Data &data) {
   led_delay = data;
   Serial.print("Set new delay: ");
   Serial.println(led_delay);
+  setDelay = true;
   return RPC_Response(NULL, led_delay);
 }
 // Processes function for RPC call "getValue"
@@ -127,28 +130,33 @@ void lightControl() {
   switchState = digitalRead(SWITCH); // read the pushButton State
   if (switchState != oldSwitchState) {
     oldSwitchState = switchState;
-  }
-  if (switchState == HIGH){
-    lightState = !lightState;
-  }
-  if (led_delay == 1 || lightState) {
-    digitalWrite(light, HIGH);
-  }
-  else if(led_delay == 0 || !lightState) {
-    digitalWrite(light, LOW);
-  }    
-  else if (led_passed > led_delay) {
-    if (lightState) {
+    delay(300);
+    if (switchState == HIGH)  
+      lightState = !lightState;
+    if (lightState)           
       digitalWrite(light, HIGH);
-    }
-    else {
+    else                      
       digitalWrite(light, LOW);
-    }
+    blink = false;
+  }
+  else if (setDelay) {
+    if(led_delay == 1)        
+      digitalWrite(light, HIGH);     
+    else if (led_delay == 0)  
+      digitalWrite(light, LOW); 
+    else
+      blink = true;       
+    setDelay = false;
+  }
+  if (blink) {
+    if (lightState)
+      digitalWrite(light, HIGH);
+    else
+      digitalWrite(light, LOW);
     lightState = !lightState;
     led_passed = 0;
   }
 }
-
 void setup() {
   // Initialize serial for debugging
   Serial.begin(112500);
