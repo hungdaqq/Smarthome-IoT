@@ -120,18 +120,7 @@ void InitWiFi() {
   reconnectWiFi();
 }
 
-void setup() {
-  // Initialize serial for debugging
-  Serial.begin(112500);
-  InitWiFi();
-  // Pinconfig
-  pinMode(light, OUTPUT);
-}
-
-// Main application loop
-void loop() {
-  delay(quant);
-  led_passed += quant;
+void lightControl() {
   if (led_delay == 1) {
     digitalWrite(light, HIGH);
   }
@@ -148,6 +137,21 @@ void loop() {
     state = !state;
     led_passed = 0;
   }
+}
+
+void setup() {
+  // Initialize serial for debugging
+  Serial.begin(112500);
+  InitWiFi();
+  // Pinconfig
+  pinMode(light, OUTPUT);
+}
+
+// Main application loop
+void loop() {
+  delay(quant);
+  led_passed += quant;
+  lightControl();
   // Reconnect to ThingsBoard, if needed
   if (!tb.connected()) {
     subscribed = false;
