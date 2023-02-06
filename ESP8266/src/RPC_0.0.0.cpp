@@ -20,6 +20,7 @@ ThingsBoard tb(wifiClient);
 // the Wifi radio's status
 int status = WL_IDLE_STATUS;
 
+#define SWITCH D2
 uint8 light = D1;
 // Array with LEDs that should be lit up one by one
 // uint8_t leds[] = {D1, D2, D3, D4, D5};
@@ -36,7 +37,9 @@ bool subscribed = false;
 // LED number that is currenlty ON.
 int current_led = 0;
 
-bool state = false;
+bool lightState = false;
+int switchState = 0; // actual read value from pin4
+int oldSwitchState = 0; // last read value from pin4
 
 // Processes function for RPC call "setValue"
 // RPC_Data is a JSON variant, that can be queried using operator[]
@@ -121,20 +124,27 @@ void InitWiFi() {
 }
 
 void lightControl() {
-  if (led_delay == 1) {
+  switchState = digitalRead(SWITCH); // read the pushButton State
+  if (switchState != oldSwitchState) {
+    oldSwitchState = switchState;
+  }
+  if (switchState == HIGH){
+    lightState = !lightState;
+  }
+  if (led_delay == 1 || lightState) {
     digitalWrite(light, HIGH);
   }
-  else if(led_delay == 0) {
+  else if(led_delay == 0 || !lightState) {
     digitalWrite(light, LOW);
   }    
   else if (led_passed > led_delay) {
-    if (state) {
+    if (lightState) {
       digitalWrite(light, HIGH);
     }
     else {
       digitalWrite(light, LOW);
     }
-    state = !state;
+    lightState = !lightState;
     led_passed = 0;
   }
 }
@@ -145,6 +155,7 @@ void setup() {
   InitWiFi();
   // Pinconfig
   pinMode(light, OUTPUT);
+  pinMode(SWITCH, INPUT);
 }
 
 // Main application loop
