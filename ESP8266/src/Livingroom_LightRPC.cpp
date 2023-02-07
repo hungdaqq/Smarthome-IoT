@@ -14,35 +14,31 @@
 // ThingsBoard server instance.
 #define THINGSBOARD_SERVER  "192.168.1.12"
 
-// Initialize ThingsBoard client
-WiFiClient wifiClient;
-// Initialize ThingsBoard instance
-ThingsBoard tb(wifiClient);
-// the Wifi radio's status
-int status = WL_IDLE_STATUS;
+WiFiClient wifiClient;         // Initialize ThingsBoard client
+ThingsBoard tb(wifiClient);    // Initialize ThingsBoard instance
+int status = WL_IDLE_STATUS;   // The Wifi radio's status
 
-#define SWITCH D2
-uint8 light = D1;
-// Array with LEDs that should be lit up one by one
+// Define PIN
+#define SWITCH D2              // BUTTON SWITCH
+#define LIGHT_SENSOR D3        // LIGHT SENSOR
+uint8 light = D1;              // LED
+
+// Array with LEDs that should be lit up one by one if using muntiple LEDs
 // uint8_t leds[] = {D1, D2, D3, D4, D5};
 // size_t leds_size = COUNT_OF(leds);
 
-// Main application loop delay
-int quant = 20;
-// Initial period of LED cycling.
-int led_delay = 10000; // max 10k ms, min 25 ms
-// Time passed after LED was turned ON, milliseconds.
-int led_passed = 0;
-// Set to true if application is subscribed for the RPC messages.
-bool subscribed = false;
-// LED number that is currenlty ON.
-int current_led = 0;
-
-bool setDelay = false;
-bool blink = false;
-bool lightState = false;
-int switchState = 0; // actual read value from pin4
-int oldSwitchState = 0; // last read value from pin4
+int quant = 20;                // Initial period of LED cycling.
+int led_delay = 10000;         // Time passed after LED was turned ON, milliseconds.
+int led_passed = 0;            // Variable to store data from server command
+bool subscribed = false;       // Set to true if application is subscribed for the RPC messages.
+bool lightState = false;       // Current state of light
+bool lightSensorState = false; // actual read value from LIGHT_SENSOR
+bool setDelay = false;         // True if there are any RPC command
+bool blink = false;            // True if there are RPC blink command
+int switchState = 0;           // actual read value from SWITCH
+int oldSwitchState = 0;        // last read value from SWITCH
+bool timerStart = false;       // variable for timing light sensor 
+unsigned long lastTime;        // variable for timing light sensor 
 
 // Processes function for RPC call "setValue"
 // RPC_Data is a JSON variant, that can be queried using operator[]
@@ -128,7 +124,8 @@ void InitWiFi() {
 }
 
 void lightControl() {
-  switchState = digitalRead(SWITCH); // read the pushButton State
+  switchState = digitalRead(SWITCH);    // read the pushButton State
+  lightSensorState = digitalRead(LIGHT_SENSOR);
   if (switchState != oldSwitchState) {
     oldSwitchState = switchState;
     delay(300);
@@ -139,6 +136,7 @@ void lightControl() {
     else                      
       digitalWrite(light, LOW);
     blink = false;
+    timerStart = false;
   }
   else if (setDelay) {
     if(led_delay == 1)        
@@ -148,6 +146,7 @@ void lightControl() {
     else
       blink = true;       
     setDelay = false;
+    timerStart = false;
   }
   if (blink) {
     if (lightState)
@@ -157,14 +156,24 @@ void lightControl() {
     lightState = !lightState;
     led_passed = 0;
   }
+  if (lightSensorState) {
+    digitalWrite(light, HIGH); 
+    timerStart = true;
+    lastTime = millis();
+  }
+  if (millis() - lastTime > 5000 && timerStart) { 
+    digitalWrite(light, LOW);
+  }
 }
 void setup() {
   // Initialize serial for debugging
   Serial.begin(112500);
   InitWiFi();
-  // Pinconfig
+  // Pin config
   pinMode(light, OUTPUT);
   pinMode(SWITCH, INPUT);
+  pinMode(LIGHT_SENSOR, INPUT);
+  lastTime = 0;
 }
 
 // Main application loop
@@ -172,16 +181,12 @@ void loop() {
   delay(quant);
   led_passed += quant;
   lightControl();
-  // Reconnect to ThingsBoard, if needed
-  if (!tb.connected()) {
-    subscribed = false;
-    // Connect to the ThingsBoard
+  if (!tb.connected()) {    // Reconnect to ThingsBoard, if needed
+    subscribed = false;     // Connect to the ThingsBoard
     reconnectTB();
   }
-  // Subscribe for RPC, if needed
-  if (!subscribed) {
+  if (!subscribed) {        // Subscribe for RPC, if needed
     subcribeRPC();
   }
-  // Process messages
-  tb.loop();
+  tb.loop();                // Process messages
 }
