@@ -1,6 +1,7 @@
 bblanchon/ArduinoJson@^6.20.0
 thingsboard/ThingsBoard@0.6
+arduino-libraries/NTPClient@^3.2.1
+smougenot/TM1637@0.0.0-alpha+sha.9486982048
 paulstoffregen/OneWire@^2.3.7
 knolleary/PubSubClient@^2.8
 milesburton/DallasTemperature@^3.11.0
-smougenot/TM1637@0.0.0-alpha+sha.9486982048

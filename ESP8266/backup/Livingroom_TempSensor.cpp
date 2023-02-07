@@ -42,6 +42,7 @@ ThingsBoard tb(wifiClient);
 int status = WL_IDLE_STATUS;
 
 void setState(char STATE){
+  // LED State: 'g' -> green, 'y' -> yellow, 'r' -> red, 'a' -> all led, 'n' -> none led
   if (STATE == 'g') {
     digitalWrite(GREEN, HIGH);
     digitalWrite(YELLOW, LOW);
@@ -137,13 +138,16 @@ void reconnectTB() {
       reconnectWiFi();
       Serial.println("Connected to AP");
     }
+    // Attempt to connect to TB Server with TOKEN provided
     Serial.print("Connecting to ThingsBoard node ... ");
     if ( tb.connect(thingsboardServer, TOKEN) ) {
+      // Success
       Serial.println( "[DONE]" );
       Serial.printf("Thingsboard Server: %s", thingsboardServer);
       Serial.println("");
     } 
     else {
+      // Failed
       Serial.print( "[FAILED]" );
       Serial.println( " : retrying in 5 seconds." );
       // Wait 5 seconds before retrying
@@ -182,7 +186,6 @@ void loop() {
   if ( !tb.connected() ) {
     reconnectTB();
   }
-
   getAndSendTemperatureAndHumidityData();
   // This is script to force MODEM_SLEEP mode, but i don't recommend to use it. 
   // WiFi.disconnect();

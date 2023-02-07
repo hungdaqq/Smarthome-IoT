@@ -4,6 +4,7 @@
 // Helper macro to calculate array size
 #define COUNT_OF(x) ((sizeof(x)/sizeof(0[x])) / ((size_t)(!(sizeof(x) % sizeof(0[x])))))
 
+// Define AP Name and Password
 #define WIFI_AP_NAME "MINH MUP_2.4G"
 #define WIFI_PASSWORD "28051989"
 
@@ -11,7 +12,7 @@
 // to understand how to obtain an access token
 #define TOKEN "Light_Control"
 // ThingsBoard server instance.
-#define THINGSBOARD_SERVER  "192.168.1.13"
+#define THINGSBOARD_SERVER  "192.168.1.12"
 
 // Initialize ThingsBoard client
 WiFiClient wifiClient;
