@@ -38,7 +38,7 @@ char thingsboardServer[] = "192.168.1.12";
 WiFiClient wifiClient;
 // Initialize ThingsBoard instance
 ThingsBoard tb(wifiClient);
- 
+ // the Wifi radio's status
 int status = WL_IDLE_STATUS;
 
 void setState(char STATE){
