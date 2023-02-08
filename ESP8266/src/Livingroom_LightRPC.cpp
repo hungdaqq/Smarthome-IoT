@@ -10,18 +10,19 @@
 
 // See https://thingsboard.io/docs/getting-started-guides/helloworld/ 
 // to understand how to obtain an access token
-#define TOKEN "Light_Control"
+#define TOKEN "LivingroomLight"
 // ThingsBoard server instance.
 #define THINGSBOARD_SERVER  "192.168.1.12"
+
 
 WiFiClient wifiClient;         // Initialize ThingsBoard client
 ThingsBoard tb(wifiClient);    // Initialize ThingsBoard instance
 int status = WL_IDLE_STATUS;   // The Wifi radio's status
 
 // Define PIN
-#define SWITCH D2              // BUTTON SWITCH
-#define LIGHT_SENSOR D3        // LIGHT SENSOR
 uint8 light = D1;              // LED
+#define SWITCH D2              // BUTTON SWITCH OF LED
+#define LIGHT_SENSOR D3        // LIGHT SENSOR
 
 // Array with LEDs that should be lit up one by one if using muntiple LEDs
 // uint8_t leds[] = {D1, D2, D3, D4, D5};
@@ -31,13 +32,12 @@ int quant = 20;                // Initial period of LED cycling.
 int led_delay = 10000;         // Time passed after LED was turned ON, milliseconds.
 int led_passed = 0;            // Variable to store data from server command
 bool subscribed = false;       // Set to true if application is subscribed for the RPC messages.
-bool lightState = false;       // Current state of light
+bool LEDState = false;         // Current state of light
 bool lightSensorState = false; // actual read value from LIGHT_SENSOR
 bool setDelay = false;         // True if there are any RPC command
-bool blink = false;            // True if there are RPC blink command
-int switchState = 0;           // actual read value from SWITCH
-int oldSwitchState = 0;        // last read value from SWITCH
-bool timerStart = false;       // variable for timing light sensor 
+bool switchLED = false;        // actual read value from SWITCH
+bool oldswitchLED = false;     // last read value from SWITCH
+bool timerStart = false;    // variable for timing light sensor 
 unsigned long lastTime;        // variable for timing light sensor 
 
 // Processes function for RPC call "setValue"
@@ -88,6 +88,7 @@ void reconnectTB() {
       Serial.println("Connected to AP");
     }
     Serial.print("Connecting to ThingsBoard node ... ");
+    // attempt to connect to TB Sever with provided TOKEN
     if ( tb.connect(THINGSBOARD_SERVER, TOKEN) ) {
       Serial.println( "[DONE]" );
       Serial.printf("Thingsboard Server: %s", THINGSBOARD_SERVER);
@@ -96,7 +97,7 @@ void reconnectTB() {
     else {
       Serial.print( "[FAILED]" );
       Serial.println( " : retrying in 5 seconds." );
-      // Wait 5 seconds before retrying
+      // Wait 5 seconds before retrying if FAILED
       delay( 5000 );
     }
   }
@@ -122,49 +123,41 @@ void InitWiFi() {
   // attempt to connect to WiFi network
   reconnectWiFi();
 }
-
 void lightControl() {
-  switchState = digitalRead(SWITCH);    // read the pushButton State
-  lightSensorState = digitalRead(LIGHT_SENSOR);
-  if (switchState != oldSwitchState) {
-    oldSwitchState = switchState;
-    delay(300);
-    if (switchState == HIGH)  
-      lightState = !lightState;
-    if (lightState)           
-      digitalWrite(light, HIGH);
-    else                      
-      digitalWrite(light, LOW);
-    blink = false;
-    timerStart = false;
+  switchLED = digitalRead(SWITCH);                // read the pushButton State
+  lightSensorState = !digitalRead(LIGHT_SENSOR);  // read the IR Sensor State
+  // LED control using button
+  if (switchLED != oldswitchLED) {                
+    oldswitchLED = switchLED;
+    delay(200);
+    if (switchLED) {
+      LEDState = !LEDState;
+      timerStart = false;
+      if (LEDState)           
+        digitalWrite(light, HIGH);
+      else                      
+        digitalWrite(light, LOW);
+    }
   }
-  else if (setDelay) {
+  // LED control using RPC Response
+  if (setDelay) {
     if(led_delay == 1)        
       digitalWrite(light, HIGH);     
     else if (led_delay == 0)  
-      digitalWrite(light, LOW); 
-    else
-      blink = true;       
+      digitalWrite(light, LOW);      
     setDelay = false;
-    timerStart = false;
   }
-  if (blink) {
-    if (lightState)
-      digitalWrite(light, HIGH);
-    else
-      digitalWrite(light, LOW);
-    lightState = !lightState;
-    led_passed = 0;
-  }
-  if (lightSensorState) {
+  // LED auto turned on by sensor
+  if (lightSensorState) {                         
     digitalWrite(light, HIGH); 
-    timerStart = true;
     lastTime = millis();
+    timerStart = true;
   }
-  if (millis() - lastTime > 5000 && timerStart) { 
+  // LED auto turned off in 5s if sensor reads LOW logic level
+  else if (millis() - lastTime > 5000 && timerStart)
     digitalWrite(light, LOW);
-  }
 }
+
 void setup() {
   // Initialize serial for debugging
   Serial.begin(112500);
@@ -178,8 +171,7 @@ void setup() {
 
 // Main application loop
 void loop() {
-  delay(quant);
-  led_passed += quant;
+
   lightControl();
   if (!tb.connected()) {    // Reconnect to ThingsBoard, if needed
     subscribed = false;     // Connect to the ThingsBoard
