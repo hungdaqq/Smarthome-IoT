@@ -13,20 +13,14 @@ extern "C" {
 // This device access token
 #define TOKEN "LivingroomTemperatureSensor"
 
-// DS18B20 sensor pinout
+// DS18B20 sensor data pin
 OneWire oneWire(D4);
 DallasTemperature sensors(&oneWire);
 
 // LED module pinout: TM1637Display display(CLK,DIO);
 TM1637Display display(D1,D2);
-
-// Temperature threshold
-#define RED D5
-#define YELLOW D6
-#define GREEN D7
-const int red = 60;
-const int yellow = 40;
-const int green = 20;
+unsigned long timing;
+unsigned long timingLive;
 
 // unsigned long lastSend;
 
@@ -41,38 +35,9 @@ ThingsBoard tb(wifiClient);
  
 int status = WL_IDLE_STATUS;
 
-void setState(char STATE){
-  // LED State: 'g' -> green, 'y' -> yellow, 'r' -> red, 'a' -> all led, 'n' -> none led
-  if (STATE == 'g') {
-    digitalWrite(GREEN, HIGH);
-    digitalWrite(YELLOW, LOW);
-    digitalWrite(RED, LOW);
-  }
-  else if (STATE == 'y') {
-    digitalWrite(YELLOW, HIGH);
-    digitalWrite(RED, LOW);
-    digitalWrite(GREEN, LOW);
-  }
-  else if (STATE == 'r') {
-    digitalWrite(RED, HIGH);
-    digitalWrite(YELLOW, LOW);
-    digitalWrite(GREEN, LOW);    
-  }
-  else if (STATE == 'n') {
-    digitalWrite(RED, LOW);
-    digitalWrite(YELLOW, LOW);
-    digitalWrite(GREEN, LOW);       
-  }
-  else if (STATE == 'a') {
-    digitalWrite(RED, HIGH);
-    digitalWrite(YELLOW, HIGH);
-    digitalWrite(GREEN, HIGH);       
-  }
-}
-
 void getAndSendTemperatureAndHumidityData() {
-  Serial.println("Collecting temperature data.");
   timing = millis();
+  Serial.println("Collecting temperature data.");
   // Read temperature as Celsius (the default)
   sensors.requestTemperatures();
   float temperature = sensors.getTempCByIndex(0);
@@ -80,12 +45,6 @@ void getAndSendTemperatureAndHumidityData() {
   if (isnan(temperature)) {
     Serial.println("Failed to read from sensor!");
   }
-  else if (temperature <= green)
-    setState('g');
-  else if (temperature <= yellow && temperature > green)
-    setState('y');
-  else
-    setState('r');
   // Display on LED module
   display.showNumberDec(round(temperature*10));
   // Print temperature on Serial port
@@ -93,31 +52,22 @@ void getAndSendTemperatureAndHumidityData() {
   Serial.print(temperature);
   Serial.println(" *C.");
   // Send TB
+  Serial.printf("Get temperature: %d ms", millis()-timing); 
+  Serial.println("");
   tb.sendTelemetryFloat("temperature", temperature);
-  Serial.printf("Get temperature: %d senconds", (millis()-timing)/1000); 
+  Serial.printf("Send temperature: %d ms", millis()-timing); 
+  Serial.println("");
 }
 
 void reconnectWiFi() {
   timing = millis();
   WiFi.begin(WIFI_AP, WIFI_PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
-    // RED LED blinks when WiFi disconnected
     delay(500);
-    setState('r');
     Serial.print(".");
-    delay(500);
-    setState('n');
   }
-  // GREEN LED blinks 3 times when WiFi connected
-  // for (int i = 0; i < 3; i++){
-  //   delay(500);
-  //   setState('g');
-  //   delay(500);
-  //   setState('n');
-  // }
-  Serial.printf("Connect WiFi: %d senconds", (millis()-timing)/1000);
   Serial.println("");
-  Serial.print("WiFi connected, IP address: "); 
+  Serial.printf("WiFi connected: %d ms, IP address: ", millis()-timing); 
   // Show IP of this device
   Serial.println(WiFi.localIP());
 }
@@ -143,9 +93,9 @@ void reconnectTB() {
     // Attempt to connect to TB Server with TOKEN provided
     Serial.print("Connecting to ThingsBoard node ... ");
     if ( tb.connect(thingsboardServer, TOKEN) ) {
-      Serial.printf("Connect TB: %d seconds", (millis()-timing)/1000); 
       // Success
-      Serial.println( "[DONE]" );
+      Serial.printf( "[DONE]: %d ms", millis()-timing );
+      Serial.println("");
       Serial.printf("Thingsboard Server: %s", thingsboardServer);
       Serial.println("");
       
@@ -155,24 +105,13 @@ void reconnectTB() {
       Serial.print( "[FAILED]" );
       Serial.println( " : retrying in 5 seconds." );
       // Wait 5 seconds before retrying
-      for (int i = 0; i < 5; i++){
-        // RED LED blinks in 5 senconds
-        delay(500);
-        setState('r');
-        delay(500);
-        setState('n');
-      }
+      delay(5000);
     }
   }
 }
 
-unsigned long timing;
 void setup() {
   Serial.begin(115200);
-  // Pinout LED to control
-  pinMode(GREEN, OUTPUT);
-  pinMode(RED, OUTPUT);
-  pinMode(YELLOW, OUTPUT);
   // Adjusting the brightness of 4 Digit 7 segment display module. Range: 0 to 7
   display.setBrightness(4);
   // Start the temperature sensor
@@ -185,18 +124,23 @@ void setup() {
   // In Light sleep mode CPU: Pending, WiFi: OFF, current: 0.4 mA
   // In Modem sleep mode CPU: ON, WiFi: OFF, current: 15 mA
   timing = 0;
+  timingLive = 0;
 }
 
+
 void loop() {
+  timingLive = millis();
   // Try to reconnect to Thingsboard Sever
   if ( !tb.connected() ) {
     reconnectTB();
   }
   getAndSendTemperatureAndHumidityData();
+  Serial.printf("System alive: %d ms", millis()-timingLive);
+  Serial.println();
   // This is script to force MODEM_SLEEP mode, but i don't recommend to use it. 
   // WiFi.disconnect();
   // WiFi.forceSleepBegin();
   // Auto Light sleep will be enabled if the WiFi and CPU is free for >10 senconds (tested).
-  delay(200e3);
+  delay(30e3);
   tb.loop();
 }
