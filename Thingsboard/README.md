@@ -33,3 +33,24 @@ Once you have added devices, you can start collecting data from them and visuali
 6. Navigate to the "Dashboards" tab.
 7. Create a new dashboard and add visualizations to it, such as charts and gauges.
 8. Select the device and telemetry data you want to visualize.
+
+## Using the Rule Engine
+To create rules in ThingsBoard, follow these steps:
+1. Navigate to the "Rule Chains" tab.
+2. Click the "Create Rule Chain" button.
+3. Enter a name and description for the rule chain.
+4. Click the "Save" button.
+5. Click the "Add Rule Node" button to create a new rule.
+7. Select the type of rule you want to create, such as "Device Attributes" or "Time Interval".
+8. Enter the required information for the rule.
+9. Click the "Save" button to create the rule.
+Once you have created rules, you can start using the rule engine to process telemetry data from your devices. To do this, follow these steps:
+1. Navigate to the "Devices" tab.
+2. Click on the device you want to apply the rule to.
+3. Click on the "Telemetry" tab.
+4. Enter the telemetry data in the appropriate fields.
+5. Click the "Save" button to store the data.
+6. Navigate to the "Rule Chains" tab.
+7. Click on the rule chain you created earlier.
+8. Observe the rule engine processing the telemetry data and triggering the actions defined in the rules.
+
