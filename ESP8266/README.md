@@ -4,6 +4,7 @@ PlatformIO is an open-source ecosystem for IoT development that can be used with
 
 ## Prerequisites
 Before getting started, you'll need to have the following installed on your development machine:
+![mqdefault](https://user-images.githubusercontent.com/97016417/217755502-83fa8726-60f5-458f-b068-5f6efd4bff74.jpg)
 
 1. Visual Studio Code
 2. The PlatformIO extension for Visual Studio Code
