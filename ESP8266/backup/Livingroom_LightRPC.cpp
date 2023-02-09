@@ -17,6 +17,7 @@
 
 WiFiClient wifiClient;         // Initialize ThingsBoard client
 ThingsBoard tb(wifiClient);    // Initialize ThingsBoard instance
+PubSubClient client(wifiClient);
 int status = WL_IDLE_STATUS;   // The Wifi radio's status
 
 // Define PIN
@@ -37,9 +38,20 @@ bool lightSensorState = false; // actual read value from LIGHT_SENSOR
 bool setDelay = false;         // True if there are any RPC command
 bool switchLED = false;        // actual read value from SWITCH
 bool oldswitchLED = false;     // last read value from SWITCH
-bool timerStart = false;    // variable for timing light sensor 
+bool timerStart = false;       // variable for timing light sensor 
 unsigned long lastTime;        // variable for timing light sensor 
 
+String get_gpio_status() {
+    StaticJsonDocument<200> jsonDoc;
+    jsonDoc[String(1)] = LEDState ? true : false;
+    // jsonDoc[String(light)] = LEDState ? true : false; // NodeMCU is backwards, default should be HIGH : LOW for arduino
+    char payload[256];
+    serializeJson(jsonDoc, payload);
+    String strPayload = String(payload);
+    Serial.print("Get gpio status: ");
+    Serial.println(strPayload);
+    return strPayload;
+}
 // Processes function for RPC call "setValue"
 // RPC_Data is a JSON variant, that can be queried using operator[]
 // See https://arduinojson.org/v5/api/jsonvariant/subscript/ for more details
@@ -110,7 +122,7 @@ void subcribeRPC(){
   if (tb.RPC_Subscribe(callbacks, COUNT_OF(callbacks))) {
     Serial.println( "[DONE]" );
     subscribed = true;
-  } 
+  }
   else {
     Serial.println( "[FAILED]" );
     Serial.println( " : retrying in 3 seconds." );
@@ -133,28 +145,30 @@ void lightControl() {
     if (switchLED) {
       LEDState = !LEDState;
       timerStart = false;
-      if (LEDState)           
-        digitalWrite(light, HIGH);
-      else                      
-        digitalWrite(light, LOW);
+      client.publish("v1/devices/me/attributes", get_gpio_status().c_str());
     }
   }
   // LED control using RPC Response
   if (setDelay) {
-    if(led_delay == 1)        
-      digitalWrite(light, HIGH);     
+    if(led_delay == 1)  
+      LEDState = true;                           
     else if (led_delay == 0)  
-      digitalWrite(light, LOW);      
+      LEDState = false;
     setDelay = false;
   }
   // LED auto turned on by sensor
-  if (lightSensorState) {                         
-    digitalWrite(light, HIGH); 
+  if (lightSensorState) {  
+    LEDState = true;                       
     lastTime = millis();
     timerStart = true;
   }
   // LED auto turned off in 5s if sensor reads LOW logic level
   else if (millis() - lastTime > 5000 && timerStart)
+    LEDState = false;
+  // Turn on/off LED based on LEDState
+  if (LEDState)           
+    digitalWrite(light, HIGH);
+  else                      
     digitalWrite(light, LOW);
 }
 
@@ -167,6 +181,7 @@ void setup() {
   pinMode(SWITCH, INPUT);
   pinMode(LIGHT_SENSOR, INPUT);
   lastTime = 0;
+  client.subscribe("v1/devices/me/rpc/request/+");
 }
 
 // Main application loop

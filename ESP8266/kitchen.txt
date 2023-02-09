@@ -1,1 +1,2 @@
 curl -v -X POST -d '{"temperature":99}' http://localhost:8080/api/v1/Kitchen_Temperature_Sensor/telemetry --header "Content-Type:application/json"
+curl -v -X POST -d 1 http://localhost:8080/api/v1/LivingroomLight/rpc/27 --header "Content-Type:application/text"
