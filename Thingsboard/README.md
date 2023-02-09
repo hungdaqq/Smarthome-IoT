@@ -14,3 +14,22 @@ Once you have logged in to the live demo server, you can start exploring the pla
 - Navigate to the "Devices" tab to see the pre-configured devices and their telemetry data.
 - Navigate to the "Dashboards" tab to view the pre-created dashboards and visualizations.
 - Play around with the visualizations and customize them to suit your needs.
+
+## Device Management
+One of the key features of ThingsBoard is the ability to manage and monitor IoT devices. To start using this feature, follow these steps:
+1. Navigate to the "Devices" tab.
+2. Click on the "Add device" button.
+3. Enter the required information, including the device name and type.
+4. Click the "Save" button to create the device.
+
+## Data Collection and Visualization
+Once you have added devices, you can start collecting data from them and visualizing it in ThingsBoard. To do this, follow these steps:
+
+1. Navigate to the "Devices" tab.
+2. Click on the device you want to collect data from.
+3. Click on the "Telemetry" tab.
+4. Enter the telemetry data in the appropriate fields.
+5. Click the "Save" button to store the data.
+6. Navigate to the "Dashboards" tab.
+7. Create a new dashboard and add visualizations to it, such as charts and gauges.
+8. Select the device and telemetry data you want to visualize.
