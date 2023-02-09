@@ -10,9 +10,9 @@ PlatformIO is an open-source ecosystem for IoT development that can be used with
 ## Getting Started
 
 To get started with PlatformIO in VSCode, you'll need to create a new project or open an existing one. Once you have a project open, you can use the PlatformIO commands within the `Project Tasks`. The basic steps are:
-1. Initialize a new project with board `Espressif ESP8266 ESP-12E` and framework `Arduino`. Or simply just open this `ESP8266` folder as the project.
-2. Build the project.
-3. Upload the project to your NodeMCU.
+1. **Initialize** a new project with board `Espressif ESP8266 ESP-12E` and framework `Arduino`. Or simply just **open** this `ESP8266` folder as the project.
+2. **Build** the project.
+3. **Upload** the project to your NodeMCU.
 
 ## Additional Resources
 
