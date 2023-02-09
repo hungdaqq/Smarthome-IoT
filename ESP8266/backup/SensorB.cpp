@@ -7,8 +7,8 @@ extern "C" {
 #include <ThingsBoard.h>
 #include <TM1637Display.h>
 
-#define WIFI_AP "MINH MUP_2.4G"
-#define WIFI_PASSWORD "28051989"
+#define WIFI_AP "IC Design Lab"
+#define WIFI_PASSWORD "thaythang74"
 
 // This device access token
 #define TOKEN "LivingroomTemperatureSensor"
@@ -33,16 +33,16 @@ const int green = 20;
 // ThingsBoard server instance.
 // Use "demo.thingsboard.io" to send data directly to Live Demo server
 // Use local IP Address of TB Edge to send data to Edge database
-char thingsboardServer[] = "192.168.1.12";
+// char thingsboardServer[] = "demo.thingsboard.io";
+char thingsboardServer[] = "192.186.1.191";
 // Initialize ThingsBoard client
 WiFiClient wifiClient;
 // Initialize ThingsBoard instance
 ThingsBoard tb(wifiClient);
- 
+ // the Wifi radio's status
 int status = WL_IDLE_STATUS;
 
 void setState(char STATE){
-  // LED State: 'g' -> green, 'y' -> yellow, 'r' -> red, 'a' -> all led, 'n' -> none led
   if (STATE == 'g') {
     digitalWrite(GREEN, HIGH);
     digitalWrite(YELLOW, LOW);
@@ -138,16 +138,13 @@ void reconnectTB() {
       reconnectWiFi();
       Serial.println("Connected to AP");
     }
-    // Attempt to connect to TB Server with TOKEN provided
     Serial.print("Connecting to ThingsBoard node ... ");
     if ( tb.connect(thingsboardServer, TOKEN) ) {
-      // Success
       Serial.println( "[DONE]" );
       Serial.printf("Thingsboard Server: %s", thingsboardServer);
       Serial.println("");
     } 
     else {
-      // Failed
       Serial.print( "[FAILED]" );
       Serial.println( " : retrying in 5 seconds." );
       // Wait 5 seconds before retrying
@@ -186,6 +183,7 @@ void loop() {
   if ( !tb.connected() ) {
     reconnectTB();
   }
+
   getAndSendTemperatureAndHumidityData();
   // This is script to force MODEM_SLEEP mode, but i don't recommend to use it. 
   // WiFi.disconnect();

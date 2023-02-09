@@ -5,14 +5,14 @@
 #define COUNT_OF(x) ((sizeof(x)/sizeof(0[x])) / ((size_t)(!(sizeof(x) % sizeof(0[x])))))
 
 // Define AP Name and Password
-#define WIFI_AP_NAME "Realme"
-#define WIFI_PASSWORD "122345678"
+#define WIFI_AP_NAME "MINH MUP_2.4G"
+#define WIFI_PASSWORD "28051989"
 
 // See https://thingsboard.io/docs/getting-started-guides/helloworld/ 
 // to understand how to obtain an access token
 #define TOKEN "LivingroomLight"
 // ThingsBoard server instance.
-#define THINGSBOARD_SERVER  "demo.thingsboard.io"
+#define THINGSBOARD_SERVER  "192.168.1.12"
 
 
 WiFiClient wifiClient;         // Initialize ThingsBoard client
@@ -146,7 +146,7 @@ void lightControl() {
       LEDState = !LEDState;
       timerStart = false;
       tb.sendAttributeBool("1", LEDState);
-      Serial.print("Send Attribute Data: ");
+      Serial.println("Sent Client Attribute Data");
     }
   }
   // LED control using RPC Response
