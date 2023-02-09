@@ -6,6 +6,9 @@ PlatformIO is an open-source ecosystem for IoT development that can be used with
 
 1. Visual Studio Code
 2. The PlatformIO extension for Visual Studio Code
+3. Operating System: Windows, macOS, Linux, FreeBSD, Linux ARMv6+
+4. Python Interpreter: Python 3.6+ or above
+5. Access to Serial Ports (USB/UART)
 
 ## Getting Started
 
@@ -13,6 +16,12 @@ To get started with PlatformIO in VSCode, you'll need to create a new project or
 1. **Initialize** a new project with `Espressif ESP8266 ESP-12E` board and `Arduino` framework. Or simply just **open** this `ESP8266` folder as the project.
 2. **Build** the project.
 3. **Upload** the project to your NodeMCU.
+
+## Creating a Project
+To create a new project in VSCode, you can go to the PlatformIO Home page (which is automatically shown on startup) and choose `New project` and select the appropriate board. This will create a new directory with the default `src` directory and `platformio.ini` file. You can now start adding your own source code files to the `src` directory and configure your project using the `platformio.ini` file.
+
+## Building and Uploading
+Once you've created your project and added your source code, you can build it with the `Project Tasks/esp12e/Build`. This will compile your code and generate a binary file that can be uploaded to your device. To upload the binary file to your device, you can connect the NodeMCU to your machine (Serial ports) with a microUSB cable and use the `Project Tasks/esp12e/Upload` command. This will transfer the binary file to your device and start running your code.
 
 ## Additional Resources
 
