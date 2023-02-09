@@ -18,7 +18,7 @@ To get started with PlatformIO in VSCode, you'll need to create a new project or
 3. **Upload** the project to your NodeMCU.
 
 ## Creating a Project
-To create a new project in VSCode, you can go to the PlatformIO Home page (which is automatically shown on startup) and choose `New project` and select the appropriate board. This will create a new directory with the default `src` directory and `platformio.ini` file. You can now start adding your own source code files to the `src` directory and configure your project using the `platformio.ini` file.
+To create a new project in VSCode, you can go to the PlatformIO Home page (which is automatically shown up on startup) and choose `New project` and select the appropriate board. This will create a new directory with the default `src` directory and `platformio.ini` file. You can now start adding your own source code files to the `src` directory and configure your project using the `platformio.ini` file.
 
 ## Building and Uploading
 Once you've created your project and added your source code, you can build it with the `Project Tasks/esp12e/Build`. This will compile your code and generate a binary file that can be uploaded to your device. To upload the binary file to your device, you can connect the NodeMCU to your machine (Serial ports) with a microUSB cable and use the `Project Tasks/esp12e/Upload` command. This will transfer the binary file to your device and start running your code.
