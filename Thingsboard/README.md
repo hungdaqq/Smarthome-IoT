@@ -55,3 +55,6 @@ Once you have created rules, you can start using the rule engine to process tele
 7. Click on the rule chain you created earlier.
 8. Observe the rule engine processing the telemetry data and triggering the actions defined in the rules.
 
+## Conclusion
+
+The ThingsBoard Live Demo Server is a great way to get started with the ThingsBoard platform and explore its features and functionality. In this Smart Home IoT project, we have already created the `.json` template files for Rule engine, Dashboard. To learn more about ThingsBoard and how to use it, please refer to the [official documentation](https://docs.thingsboard.io/).
