@@ -1,10 +1,15 @@
 # NodeMCU ESP8266 programming environment: Platform.io
 
+<br />
+<div align="center">
+  <a href="https://github.com/hungdaqq/Smarthome-IoT">
+    <img src="images/mqdefault.jpg" alt="Logo" width="320" height="180">
+  </a>
+</div>
+
 PlatformIO is an open-source ecosystem for IoT development that can be used within the Visual Studio Code (VSCode) editor. It provides a platform for developing, building, deploying, and managing software for microcontrollers and other embedded systems.
 
 ## Prerequisites
-Before getting started, you'll need to have the following installed on your development machine:
-![mqdefault](https://user-images.githubusercontent.com/97016417/217755502-83fa8726-60f5-458f-b068-5f6efd4bff74.jpg)
 
 1. Visual Studio Code
 2. The PlatformIO extension for Visual Studio Code
