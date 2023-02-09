@@ -4,7 +4,7 @@
 extern "C" {
 #include "user_interface.h"
 }
-#include <ThingsBoard.h>
+#include "ThingsBoard.h"
 #include <TM1637Display.h>
 
 #define WIFI_AP "MINH MUP_2.4G"
@@ -36,7 +36,6 @@ ThingsBoard tb(wifiClient);
 int status = WL_IDLE_STATUS;
 
 void getAndSendTemperatureAndHumidityData() {
-  timing = millis();
   Serial.println("Collecting temperature data.");
   // Read temperature as Celsius (the default)
   sensors.requestTemperatures();
@@ -52,11 +51,11 @@ void getAndSendTemperatureAndHumidityData() {
   Serial.print(temperature);
   Serial.println(" *C.");
   // Send TB
-  Serial.printf("Get temperature: %d ms", millis()-timing); 
-  Serial.println("");
+  // Serial.printf("Get temperature: %d ms", millis()-timing); 
+  // Serial.println("");
   tb.sendTelemetryFloat("temperature", temperature);
-  Serial.printf("Send temperature: %d ms", millis()-timing); 
-  Serial.println("");
+  // Serial.printf("Send temperature: %d ms", millis()-timing); 
+  // Serial.println("");
 }
 
 void reconnectWiFi() {
@@ -67,7 +66,7 @@ void reconnectWiFi() {
     Serial.print(".");
   }
   Serial.println("");
-  Serial.printf("WiFi connected: %d ms, IP address: ", millis()-timing); 
+  Serial.printf("WiFi connected: %ld ms, IP address: ", millis()-timing); 
   // Show IP of this device
   Serial.println(WiFi.localIP());
 }
@@ -94,7 +93,7 @@ void reconnectTB() {
     Serial.print("Connecting to ThingsBoard node ... ");
     if ( tb.connect(thingsboardServer, TOKEN) ) {
       // Success
-      Serial.printf( "[DONE]: %d ms", millis()-timing );
+      Serial.printf( "[DONE]: %ld ms", millis()-timing );
       Serial.println("");
       Serial.printf("Thingsboard Server: %s", thingsboardServer);
       Serial.println("");
@@ -135,7 +134,7 @@ void loop() {
     reconnectTB();
   }
   getAndSendTemperatureAndHumidityData();
-  Serial.printf("System alive: %d ms", millis()-timingLive);
+  Serial.printf("System awake for: %ld ms", millis()-timingLive);
   Serial.println();
   // This is script to force MODEM_SLEEP mode, but i don't recommend to use it. 
   // WiFi.disconnect();
