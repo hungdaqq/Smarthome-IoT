@@ -104,7 +104,7 @@ Before getting started with the project, you will need the following:
 ## Roadmap and Future work
 
 - [x] Indoor temperature monitoring
-- [x] Outdoor temperature, humidity and air quality monitoring (with OpenWeather API)
+- [x] Outdoor temperature, humidity monitoring (with OpenWeather API)
 - [x] Light and Household applicances control
 - [x] Alarms and critical alerts
 - [ ] Power consumption and charging monitoring
