@@ -43,7 +43,8 @@ To create rules in ThingsBoard, follow these steps:
 5. Click the "Add Rule Node" button to create a new rule.
 7. Select the type of rule you want to create, such as "Device Attributes" or "Time Interval".
 8. Enter the required information for the rule.
-9. Click the "Save" button to create the rule.
+9. Click the "Save" button to create the rule.  
+
 Once you have created rules, you can start using the rule engine to process telemetry data from your devices. To do this, follow these steps:
 1. Navigate to the "Devices" tab.
 2. Click on the device you want to apply the rule to.
