@@ -6,6 +6,11 @@ ThingsBoard Live Demo Server is a pre-configured instance of the ThingsBoard IoT
 ## Accessing the Live Demo Server
 To access the ThingsBoard Live Demo Server, follow these steps:
 1. Open a web browser and navigate to https://demo.thingsboard.io/.
-2. Enter the your login credentials or use the default: Username: `tenant@thingsboard.io`, password: `tenant`.
+2. Enter the your login credentials or use the default one: Username: `tenant@thingsboard.io`, password: `tenant`.
 
 ## Exploring the Live Demo Server
+
+Once you have logged in to the live demo server, you can start exploring the platform. Here are a few things you can do:
+- Navigate to the "Devices" tab to see the pre-configured devices and their telemetry data.
+- Navigate to the "Dashboards" tab to view the pre-created dashboards and visualizations.
+- Play around with the visualizations and customize them to suit your needs.
