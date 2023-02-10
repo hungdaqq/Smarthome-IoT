@@ -7,3 +7,7 @@
 4. Navigate to the "Dashboard" tab and inport the `LivingroomDashboard.json` template.
 5. Create `Device Allias` as `Single Entity` and choose the Devices whichs has been created at Step 1.
 6. Edit the datasource of each widgets/charts/tables.
+
+## Features
+1. Temperature monitoring with sensor.
+2. Controll light with movement sensor, button, and RPC command.
