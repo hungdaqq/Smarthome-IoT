@@ -1,5 +1,5 @@
 # Livingroom controlling 
-In the livingroom, we will have a MCU to control LED light and Heater and a battery-powered MCU to collect sensor datas.
+In the livingroom, we will have a USB-powered MCU to control LED light and Heater and a battery-powered MCU to collect sensor datas.
 ## List of hardware
 - 02 NodeMCU ESP8266 
 - 02 LEDs
