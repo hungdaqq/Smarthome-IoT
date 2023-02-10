@@ -1,4 +1,4 @@
-# Living Room controlling 
+# Livingroom controlling 
 
 ## Installation
 1. Replace `ESP8266/src` by each file in `Livingroom/src` and upload the code to each of your ESP.
