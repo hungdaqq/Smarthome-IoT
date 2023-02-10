@@ -110,7 +110,7 @@ Before getting started with the project, you will need the following:
 - [x] Alarms and critical alerts
 - [ ] Power consumption and charging monitoring
 - [ ] Devices claming (QR code)
-- [ ] Data analytics
+- [ ] Data analytics with Trendz
 
 See the [open issues](https://github.com/hungdaqq/Smarthome-IoT/issues) for a full list of proposed features (and known issues).
 
