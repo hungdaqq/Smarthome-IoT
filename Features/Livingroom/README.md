@@ -16,7 +16,7 @@ In the livingroom, we will have a MCU to control LED light and Heater and a batt
 2. Replace `ESP8266/src` with each file in `Livingroom/src`, then upload the code to the corresponding MCU.
 3. Connect the parts in line with the following hardware schemas:
 4. Navigate to the "Dashboard" tab and inport the `LivingroomDashboard.json` template.
-5. Create `Device Allias` as `Single Entity` and choose the Devices whichs has been created at Step 1.
+5. Create `Device Allias` as `Single Entity` and choose the Devices which have been created at Step 1.
 6. Edit the datasource of each widgets/charts/tables.
 
 ## Features
