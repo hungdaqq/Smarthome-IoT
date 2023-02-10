@@ -1,5 +1,5 @@
 # Livingroom controlling 
-
+In the livingroom, we will have a MCU to control LED light and Heater and a battery-powered MCU to collect sensor datas.
 ## List of hardware
 - 02 NodeMCU ESP8266 
 - 02 LEDs
@@ -20,6 +20,6 @@
 6. Edit the datasource of each widgets/charts/tables.
 
 ## Features
-- Temperature monitoring with sensor device (low-powered).
+- Temperature monitoring.
 - Control LED light with Infrared Sensor (IR sensor), button, and RPC command.
-- Control Heater temperature.
+- Adjust Heater temperature.
