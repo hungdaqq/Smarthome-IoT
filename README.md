@@ -107,7 +107,7 @@ Before getting started with the project, you will need the following:
 - [x] Indoor temperature monitoring
 - [x] Outdoor temperature, humidity monitoring (with OpenWeather API)
 - [x] Light and Household applicances control
-- [x] Alarms and critical alerts
+- [x] Create alarms, send emails and notifications.
 - [ ] Power consumption and charging monitoring
 - [ ] Devices claming (QR code)
 - [ ] Data analytics with Trendz
