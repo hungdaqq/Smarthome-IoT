@@ -9,5 +9,5 @@
 6. Edit the datasource of each widgets/charts/tables.
 
 ## Features
-1. Temperature monitoring with sensor.
+1. Temperature monitoring with sensor device (low-powered).
 2. Controll light with movement sensor, button, and RPC command.
