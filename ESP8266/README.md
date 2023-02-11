@@ -1,4 +1,4 @@
-# NodeMCU ESP8266 programming environment: Platform.io
+# NodeMCU ESP8266 programming environment Platform.io
 
 PlatformIO is an open-source ecosystem for IoT development that can be used within the Visual Studio Code (VSCode) editor. It provides a platform for developing, building, deploying, and managing software for microcontrollers and other embedded systems.
 
