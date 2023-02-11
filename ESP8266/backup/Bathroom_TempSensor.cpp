@@ -5,7 +5,7 @@ extern "C" {
 #include "user_interface.h"
 }
 #include "ThingsBoard.h"
-#include <TM1637Display.h>
+#include <Led4digit74HC595.h>
 
 // #define WIFI_AP_NAME "MINH MUP_2.4G"
 // #define WIFI_PASSWORD "28051989"
@@ -13,7 +13,7 @@ extern "C" {
 #define WIFI_PASSWORD "88998899"
 
 // This device access token
-#define TOKEN "LivingroomTemperatureSensor"
+#define TOKEN "BathroomTemperatureSensor"
 // ThingsBoard server instance.
 // Use "demo.thingsboard.io" to send data directly to Live Demo server
 // Use local IP Address of TB Edge to send data to Edge database
@@ -24,8 +24,7 @@ OneWire oneWire(D4);
 DallasTemperature sensors(&oneWire);
 
 // LED module pinout: TM1637Display display(CLK,DIO);
-TM1637Display display(D1,D2);
-// unsigned long timing;
+Led4digit74HC595 display(D1,D2,D3);
 // variable for timing and setting sensor period
 unsigned long timingLive;
 unsigned long sensorPeriod;
@@ -46,7 +45,7 @@ void getAndSendTemperatureAndHumidityData() {
     Serial.println("Failed to read from sensor!");
   }
   // Display on LED module
-  display.showNumberDec(round(temperature*10));
+  display.setNumber(round(temperature*10));
   // Print temperature on Serial port
   Serial.print("Temperature: ");
   Serial.print(temperature);
@@ -113,7 +112,7 @@ void reconnectTB() {
 void setup() {
   Serial.begin(115200);
   // Adjusting the brightness of 4 Digit 7 segment display module. Range: 0 to 7
-  display.setBrightness(4);
+  display.setDecimalPoint(2);
   // Start the temperature sensor
   sensors.begin();
   delay(10);
@@ -123,26 +122,28 @@ void setup() {
   // In Light sleep mode CPU: Pending, WiFi: OFF, current: 0.4 mA
   // In Modem sleep mode CPU: ON, WiFi: OFF, current: 15 mA
   wifi_set_sleep_type(MODEM_SLEEP_T);
-  // timing = 0;
-  // timingLive = 0;
+  timingLive = 0;
   // sensor cycle;
   sensorPeriod = 100*1000; // 100 secs
 }
 
 
 void loop() {
-  timingLive = millis();
+  display.loopShow();
   // Try to reconnect to Thingsboard Sever
   if ( !tb.connected() ) {
     reconnectTB();
+  }
+  if (timingLive == 0 || millis() - timingLive > sensorPeriod) {
+    getAndSendTemperatureAndHumidityData();
+    timingLive = millis();
   }
   // This is script to force MODEM_SLEEP mode, but i don't recommend to use it. 
   // WiFi.disconnect();
   // WiFi.forceSleepBegin();
   // Auto Light sleep will be enabled if the WiFi and CPU is free for >10 senconds (tested).
-  getAndSendTemperatureAndHumidityData();
-  Serial.printf("System awake for: %ld ms", millis()-timingLive);
-  Serial.println();
-  delay(sensorPeriod);
+  // Serial.printf("System awake for: %ld ms", millis()-timingLive);
+  // Serial.println();
+  // delay(sensorPeriod);
   tb.loop();
 }

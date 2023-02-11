@@ -13,7 +13,7 @@ extern "C" {
 #define WIFI_PASSWORD "88998899"
 
 // This device access token
-#define TOKEN "LivingroomTemperatureSensor"
+#define TOKEN "KitchenTemperatureSensor"
 // ThingsBoard server instance.
 // Use "demo.thingsboard.io" to send data directly to Live Demo server
 // Use local IP Address of TB Edge to send data to Edge database

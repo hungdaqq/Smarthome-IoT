@@ -10,6 +10,7 @@
             "includePath": [
                 "/home/hung/Documents/PlatformIO/Projects/Smarthome-IoT/ESP8266/include",
                 "/home/hung/Documents/PlatformIO/Projects/Smarthome-IoT/ESP8266/src",
+                "/home/hung/Documents/PlatformIO/Projects/Smarthome-IoT/ESP8266/lib/Led4digit74HC595/src",
                 "/home/hung/.platformio/packages/framework-arduinoespressif8266/libraries/ESP8266WiFi/src",
                 "/home/hung/Documents/PlatformIO/Projects/Smarthome-IoT/ESP8266/.pio/libdeps/esp12e/ThingsBoard/src",
                 "/home/hung/Documents/PlatformIO/Projects/Smarthome-IoT/ESP8266/.pio/libdeps/esp12e/NTPClient",
@@ -23,7 +24,6 @@
                 "/home/hung/.platformio/packages/toolchain-xtensa/include",
                 "/home/hung/.platformio/packages/framework-arduinoespressif8266/tools/sdk/lwip2/include",
                 "/home/hung/.platformio/packages/framework-arduinoespressif8266/variants/nodemcu",
-                "/home/hung/Documents/PlatformIO/Projects/Smarthome-IoT/ESP8266/lib/Led4digit74HC595/src",
                 "/home/hung/.platformio/packages/framework-arduinoespressif8266/libraries/ArduinoOTA",
                 "/home/hung/.platformio/packages/framework-arduinoespressif8266/libraries/DNSServer/src",
                 "/home/hung/.platformio/packages/framework-arduinoespressif8266/libraries/EEPROM",
@@ -65,6 +65,7 @@
                 "path": [
                     "/home/hung/Documents/PlatformIO/Projects/Smarthome-IoT/ESP8266/include",
                     "/home/hung/Documents/PlatformIO/Projects/Smarthome-IoT/ESP8266/src",
+                    "/home/hung/Documents/PlatformIO/Projects/Smarthome-IoT/ESP8266/lib/Led4digit74HC595/src",
                     "/home/hung/.platformio/packages/framework-arduinoespressif8266/libraries/ESP8266WiFi/src",
                     "/home/hung/Documents/PlatformIO/Projects/Smarthome-IoT/ESP8266/.pio/libdeps/esp12e/ThingsBoard/src",
                     "/home/hung/Documents/PlatformIO/Projects/Smarthome-IoT/ESP8266/.pio/libdeps/esp12e/NTPClient",
@@ -78,7 +79,6 @@
                     "/home/hung/.platformio/packages/toolchain-xtensa/include",
                     "/home/hung/.platformio/packages/framework-arduinoespressif8266/tools/sdk/lwip2/include",
                     "/home/hung/.platformio/packages/framework-arduinoespressif8266/variants/nodemcu",
-                    "/home/hung/Documents/PlatformIO/Projects/Smarthome-IoT/ESP8266/lib/Led4digit74HC595/src",
                     "/home/hung/.platformio/packages/framework-arduinoespressif8266/libraries/ArduinoOTA",
                     "/home/hung/.platformio/packages/framework-arduinoespressif8266/libraries/DNSServer/src",
                     "/home/hung/.platformio/packages/framework-arduinoespressif8266/libraries/EEPROM",
