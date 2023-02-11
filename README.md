@@ -69,6 +69,8 @@ This project is aimed at creating a smart home system that can control various d
     <img src="images/diagram.png" alt="Logo" width="800" height="630">
   </a>
 </div>
+<p align="justify">
+The project's deployment diagram is shown here. For WiFi communication between the system, we selected the low-cost MCU ESP8266, and chose the Thingsboard IoT Platform to monitor and control various types of endpoints via MQTT protocol. For edge computing, we used Thingsboard Edge, and for cloud computing, the Live Demo Server. Since it is an opensource platform, there is absolutely no expense involved. </p>
 
 ### Prerequisites
 Before getting started with the project, you will need the following:
@@ -107,10 +109,10 @@ Before getting started with the project, you will need the following:
 - [x] Indoor temperature monitoring
 - [x] Outdoor temperature, humidity monitoring (with OpenWeather API)
 - [x] Light and Household applicances control
-- [x] Alarms and critical alerts
+- [x] Create alarms, send emails and notifications.
 - [ ] Power consumption and charging monitoring
 - [ ] Devices claming (QR code)
-- [ ] Data analytics
+- [ ] Data analytics with Trendz
 
 See the [open issues](https://github.com/hungdaqq/Smarthome-IoT/issues) for a full list of proposed features (and known issues).
 
