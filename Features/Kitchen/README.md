@@ -17,6 +17,11 @@ In the kitchen, we will have a USB-powered MCU to control LED light and Buzzer a
 1. In Thingsboard Live Demo Server, navigate to the "Devices" tab and click on the "Add device" button. Enter the required information, including the device name, type and credential. Click the "Save" button to create the device.
 2. Replace `ESP8266/src` with each file in `Kitchen/src`, then upload the code to the corresponding MCU.
 3. Connect the parts in line with the following hardware schemas:
+<br />
+<div align="center">
+  <a href="https://github.com/hungdaqq/Smarthome-IoT/blob/main/Features/Kitchen/shema1.png">
+    <img src="images/smarthome.jpg" alt="Logo" width="800" height="415">
+  </a>
 4. Navigate to the "Dashboard" tab and inport the `LivingroomDashboard.json` template.
 5. Create `Device Allias` as `Single Entity` and choose the Devices which have been created at Step 1.
 6. Edit the datasource of each widgets/charts/tables.
