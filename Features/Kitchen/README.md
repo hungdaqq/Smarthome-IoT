@@ -19,8 +19,8 @@ In the kitchen, we will have a USB-powered MCU to control LED light and Buzzer a
 3. Connect the parts in line with the following hardware schemas:
 <br />
 <div align="center">
-  <a href="https://github.com/hungdaqq/Smarthome-IoT/blob/main/Features/Kitchen/shema1.png">
-    <img src="schema1.png" alt="Logo" width="800" height="415">
+  <a href="https://github.com/hungdaqq/Smarthome-IoT/blob/main/Features/Kitchen/schema1.png">
+    <img src="Features/Kitchen/schema1.png" alt="Logo" width="800" height="415">
   </a>
 </div>
 4. Navigate to the "Dashboard" tab and inport the `LivingroomDashboard.json` template.
