@@ -1,0 +1,13 @@
+{
+  "name": "building",
+  "description": null,
+  "image": null,
+  "defaultRuleChainId": {
+    "entityType": "RULE_CHAIN",
+    "id": "6d6b53d0-7ad0-11ed-99f0-f991b4c17f38"
+  },
+  "defaultDashboardId": null,
+  "defaultQueueName": null,
+  "externalId": null,
+  "default": false
+}

@@ -1,0 +1,7 @@
+name,profile,label,token
+Bathroom Temperature Sensor,Temperature Sensor,Temperature,BathroomTemperatureSensor
+Bedroom Temperature Sensor,Temperature Sensor,Temperature,BedroomTemperatureSensor
+Kitchen Light,Light,Light control,KitchenLight
+Livingroom Light,Light,Light control,LivingroomLight
+Kitchen Temperature Sensor,Temperature Sensor,Temperature,KitchenTemperatureSensor
+Livingroom Temperature Sensor,Temperature Sensor,Temperature,LivingroomTemperatureSensor

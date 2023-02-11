@@ -1,0 +1,192 @@
+{
+  "ruleChain": {
+    "additionalInfo": null,
+    "name": "Create/Clear Alarm & Send Email",
+    "type": "CORE",
+    "firstRuleNodeId": null,
+    "root": false,
+    "debugMode": false,
+    "configuration": null,
+    "externalId": null
+  },
+  "metadata": {
+    "firstNodeIndex": 0,
+    "nodes": [
+      {
+        "additionalInfo": {
+          "layoutX": 344,
+          "layoutY": 151
+        },
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "Under Threshold",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "return msg.temperature < -40 || msg.temperature > 80;"
+        },
+        "externalId": null
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 904,
+          "layoutY": 63
+        },
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "Create Alarm",
+        "debugMode": false,
+        "configuration": {
+          "alarmType": "Critical Temperature",
+          "alarmDetailsBuildJs": "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;",
+          "severity": "CRITICAL",
+          "propagate": true
+        },
+        "externalId": null
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 617,
+          "layoutY": 222
+        },
+        "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
+        "name": "Clear Alarm",
+        "debugMode": false,
+        "configuration": {
+          "alarmType": "Critical Temperature",
+          "alarmDetailsBuildJs": "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;"
+        },
+        "externalId": null
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 596,
+          "layoutY": 63
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "Add temperature to metadata",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "metadata.temperature = msg.temperature;\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+        },
+        "externalId": null
+      },
+      {
+        "additionalInfo": {
+          "description": null,
+          "layoutX": 1213,
+          "layoutY": 64
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbMsgToEmailNode",
+        "name": "Temperature Email",
+        "debugMode": false,
+        "configuration": {
+          "fromTemplate": "info@testmail.org",
+          "toTemplate": "hungdaqq@gmail.com",
+          "ccTemplate": "hung.dq191879@sis.hust.edu.vn, tuan.tm192153@sis.hust.edu.vn, tuan.ta192152@sis.hust.edu.vn",
+          "bccTemplate": null,
+          "subjectTemplate": "Temperature Alert - Correction Needed",
+          "mailBodyType": "false",
+          "isHtmlTemplate": "",
+          "bodyTemplate": "\nTemperature monitoring system detected unacceptable temperature: ${temperature} at device: ${deviceName}. Please check and correct it. If unable, seek professional assistance.\n\nTake this alert seriously. Contact us if needed. Stay safe.\n\nBest regards,\nGroup 08 - Smart Home IoT"
+        },
+        "externalId": null
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1518,
+          "layoutY": 67
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbSendEmailNode",
+        "name": "Send SMTP",
+        "debugMode": false,
+        "configuration": {
+          "useSystemSmtpSettings": false,
+          "smtpProtocol": "smtp",
+          "smtpHost": "smtp-relay.sendinblue.com",
+          "smtpPort": 587,
+          "timeout": 10000,
+          "enableTls": true,
+          "tlsVersion": "TLSv1.2",
+          "enableProxy": false,
+          "proxyHost": null,
+          "proxyPort": null,
+          "proxyUser": null,
+          "proxyPassword": null,
+          "username": "hungdaqq@gmail.com",
+          "password": "xsmtpsib-af32b1b3b51d1f08cc1c745bcbac9347d1071591b6685ea265d563e62dde67d3-4Gn65VhNRE8DZvyj"
+        },
+        "externalId": null
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 828,
+          "layoutY": 141
+        },
+        "type": "org.thingsboard.rule.engine.rpc.TbSendRPCRequestNode",
+        "name": "to device",
+        "debugMode": false,
+        "configuration": {
+          "timeoutInSeconds": 60
+        },
+        "externalId": null
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1197,
+          "layoutY": 224
+        },
+        "type": "org.thingsboard.rule.engine.edge.TbMsgPushToEdgeNode",
+        "name": "edge",
+        "debugMode": false,
+        "configuration": {
+          "scope": "SERVER_SCOPE"
+        },
+        "externalId": null
+      }
+    ],
+    "connections": [
+      {
+        "fromIndex": 0,
+        "toIndex": 2,
+        "type": "False"
+      },
+      {
+        "fromIndex": 0,
+        "toIndex": 3,
+        "type": "True"
+      },
+      {
+        "fromIndex": 0,
+        "toIndex": 6,
+        "type": "True"
+      },
+      {
+        "fromIndex": 1,
+        "toIndex": 4,
+        "type": "Created"
+      },
+      {
+        "fromIndex": 1,
+        "toIndex": 7,
+        "type": "Created"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 7,
+        "type": "Cleared"
+      },
+      {
+        "fromIndex": 3,
+        "toIndex": 1,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 4,
+        "toIndex": 5,
+        "type": "Success"
+      }
+    ],
+    "ruleChainConnections": null
+  }
+}
