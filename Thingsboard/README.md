@@ -57,4 +57,4 @@ Once you have created rules, you can start using the rule engine to process tele
 
 ## Conclusion
 
-The ThingsBoard Live Demo Server is a great way to get started with the ThingsBoard platform and explore its features and functionality. In this Smart Home IoT project, we have already created the `.json` and `.csv` template files for Rule engine, Dashboard, Devices and Assets. To learn more about ThingsBoard and how to use it, please refer to the [official documentation](https://docs.thingsboard.io/).
+The ThingsBoard Live Demo Server is a great way to get started with the ThingsBoard platform and explore its features and functionality. In this Smart Home IoT project, we have already created the `.json` and `.csv` template files for Rule engine, Dashboard, Profiles, Devices and Assets. To learn more about ThingsBoard and how to use it, please refer to the [official documentation](https://docs.thingsboard.io/).
