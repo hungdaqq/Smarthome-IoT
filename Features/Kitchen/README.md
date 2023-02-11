@@ -20,8 +20,9 @@ In the kitchen, we will have a USB-powered MCU to control LED light and Buzzer a
 <br />
 <div align="center">
   <a href="https://github.com/hungdaqq/Smarthome-IoT/blob/main/Features/Kitchen/shema1.png">
-    <img src="images/smarthome.jpg" alt="Logo" width="800" height="415">
+    <img src="Features/Kitchen/schema1.png" alt="Logo" width="800" height="415">
   </a>
+</div>
 4. Navigate to the "Dashboard" tab and inport the `LivingroomDashboard.json` template.
 5. Create `Device Allias` as `Single Entity` and choose the Devices which have been created at Step 1.
 6. Edit the datasource of each widgets/charts/tables.
