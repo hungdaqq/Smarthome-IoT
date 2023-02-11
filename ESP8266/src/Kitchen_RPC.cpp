@@ -5,14 +5,17 @@
 #define COUNT_OF(x) ((sizeof(x)/sizeof(0[x])) / ((size_t)(!(sizeof(x) % sizeof(0[x])))))
 
 // Define AP Name and Password
-#define WIFI_AP_NAME "MINH MUP_2.4G"
-#define WIFI_PASSWORD "28051989"
+// #define WIFI_AP_NAME "MINH MUP_2.4G"
+// #define WIFI_PASSWORD "28051989"
+#define WIFI_AP_NAME "4H"
+#define WIFI_PASSWORD "88998899"
 
 // See https://thingsboard.io/docs/getting-started-guides/helloworld/ 
 // to understand how to obtain an access token
 #define TOKEN "KitchenLight"
-// ThingsBoard server instance.
-#define THINGSBOARD_SERVER  "192.168.1.12"
+// ThingsBoard server instance
+// Replace your TB Egde IP address
+#define THINGSBOARD_SERVER  "192.168.1.7" 
 
 
 WiFiClient wifiClient;         // Initialize ThingsBoard client
@@ -24,14 +27,18 @@ int status = WL_IDLE_STATUS;   // The Wifi radio's status
 uint8 light = D1;              // LED
 #define SENSOR D2              // BUTTON SWITCH OF LED
 #define BUZZER D3              // BUZZER
-#define SWITCH D5              // SWITCH
+#define LEDSWITCH D5           // LED SWITCH
+#define BUZZERSWITCH D6        // BUZZER SWITCH
 
 bool subscribed = false;       // Set to true if application is subscribed for the RPC messages
 bool LEDState = false;         // Current state of light
 bool switchLED = false;        // actual read value from SWITCH
 bool oldswitchLED = false;     // last read value from SWITCH
+bool buzzerState = false;      // Current state of buzzers
+bool switchBuzzer = false;     // actual read value from SWITCH
+bool oldswitchBuzzer = false;  // last read value from SWITCH
 bool sensorState = false;
-unsigned long lastTime;        // variable for timing fire sensor 
+// unsigned long lastTime;     // variable for timing fire sensor 
 
 // Processes function for RPC call "setValue"
 // RPC_Data is a JSON variant, that can be queried using operator[]
@@ -115,34 +122,54 @@ void InitWiFi() {
   reconnectWiFi();
 }
 void lightControl() {
-  switchLED = digitalRead(SWITCH);                // read the pushButton State
-  sensorState = !digitalRead(SENSOR);  // read the IR Sensor State
+  switchLED = digitalRead(LEDSWITCH);       // read the pushButton LED State
+  switchBuzzer = digitalRead(BUZZERSWITCH); // read the pushButton Buzzer State
+  sensorState = !digitalRead(SENSOR);       // read the IR Sensor State
   // LED control using button
-  if (switchLED != oldswitchLED) {                
+  if (switchLED != oldswitchLED) { 
+    // Compare current state with last state               
     oldswitchLED = switchLED;
     delay(200);
     if (switchLED) {
       LEDState = !LEDState;
+      // Send client attribute
       tb.sendAttributeBool("1", LEDState);
-      Serial.println("Sent Client Attribute Data");
+      Serial.println("Sent Client Attribute LED data");
     }
   }
-  // LED auto turned on by sensor
+  if (switchBuzzer != oldswitchBuzzer) { 
+    // Compare current state with last state               
+    oldswitchBuzzer = switchBuzzer;
+    delay(200);
+    if (switchBuzzer) {
+      buzzerState = !buzzerState;
+      tb.sendAttributeBool("buzzer", buzzerState);
+      Serial.println("Sent Client Attribute Buzzer data");
+    }
+  }
+  // Buzzer and LED are auto turned on by sensor
   if (sensorState) {  
-    LEDState = true;                       
-    lastTime = millis();
-    digitalWrite(BUZZER, HIGH);
-    tb.sendAttributeInt("buzzer", 1);
-    Serial.println("Sent Client Attribute Sensor Data");
+    LEDState = true;
+    buzzerState = true;                      
+    // lastTime = millis();
+    // digitalWrite(BUZZER, HIGH);
+    // Send client attribute
+    tb.sendAttributeBool("buzzer", buzzerState);
+    Serial.println("Sent Client Attribute Buzzer data");
   }
   // BUZZER auto turned off in 5s if sensor doesn't get any fire
-  else if (millis() - lastTime > 500)
-    digitalWrite(BUZZER, LOW);
+  // else if (millis() - lastTime > 500)
+  //   digitalWrite(BUZZER, LOW);
   // Turn on/off LED based on LEDState
   if (LEDState)           
     digitalWrite(light, HIGH);
   else                      
     digitalWrite(light, LOW);
+  // Turn on/off Buzzer based on buzzerState  
+  if (buzzerState)           
+    digitalWrite(BUZZER, HIGH);
+  else                      
+    digitalWrite(BUZZER, LOW);
 }
 
 void setup() {
@@ -152,9 +179,10 @@ void setup() {
   // Pin config
   pinMode(light, OUTPUT);
   pinMode(BUZZER, OUTPUT);
-  pinMode(SWITCH, INPUT);
+  pinMode(LEDSWITCH, INPUT);
+  pinMode(BUZZERSWITCH, INPUT);
   pinMode(SENSOR, INPUT);
-  lastTime = 0;
+  // lastTime = 0;
 }
 
 // Main application loop
