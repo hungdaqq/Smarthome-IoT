@@ -17,7 +17,7 @@ extern "C" {
 // ThingsBoard server instance.
 // Use "demo.thingsboard.io" to send data directly to Live Demo server
 // Use local IP Address of TB Edge to send data to Edge database
-char thingsboardServer[] = "192.168.1.7";
+char thingsboardServer[] = "192.168.0.2";
 
 // DS18B20 sensor data pin
 OneWire oneWire(D4);
