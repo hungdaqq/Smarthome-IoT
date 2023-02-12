@@ -12,7 +12,7 @@ In the livingroom, we will have a USB-powered MCU to control LED light and Heate
 - 3.3V power source (for example lithium battery)
 
 ## Installation steps
-1. In Thingsboard Live Demo Server, navigate to the "Devices" tab and click on the "Add device" button. Enter the required information, including the device name, type and credential. Click the "Save" button to create the device.
+1. In Thingsboard Live Demo Server, navigate to the "Devices" tab and click on the "Add device" button. Enter the required information, including the device name, type and credential. Click the "Save" button to create the device. If you have used `Bulk Provisioning` with `.csv` file, please skip this step.
 2. Replace `ESP8266/src` with each file in `Livingroom/src`, then upload the code to the corresponding MCU.
 3. Connect the parts in line with the following hardware schemas:
 4. Navigate to the "Dashboard" tab and inport the `LivingroomDashboard.json` template.
