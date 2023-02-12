@@ -14,8 +14,10 @@ In the livingroom, we will have a USB-powered MCU to control LED light and Heate
 ## Installation steps
 1. In Thingsboard Live Demo Server, navigate to the "Devices" tab and click on the "Add device" button. Enter the required information, including the device name, type and credential. Click the "Save" button to create the device. If you have used `Bulk Provisioning` with `.csv` file, please skip this step.
 2. Replace `ESP8266/src` with each file in `Livingroom/src`, then upload the code to the corresponding MCU.
-3. Connect the parts in line with the following hardware schemas:
+3. Connect the parts in line with the following hardware schemas:  
+For light controlling device:  
 ![Schenma1](https://github.com/hungdaqq/Smarthome-IoT/blob/main/Features/Livingroom/schema.png)
+For temperature sensor device:  
 ![Schenma2](https://github.com/hungdaqq/Smarthome-IoT/blob/main/Features/Livingroom/battery.png)
 4. Navigate to the "Dashboard" tab and inport the `LivingroomDashboard.json` template.
 5. Create `Device Allias` as `Single Entity` and choose the Devices which have been created at Step 1.
