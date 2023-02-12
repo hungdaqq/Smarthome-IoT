@@ -20,7 +20,7 @@ In the kitchen, we will have a USB-powered MCU to control LED light and Buzzer a
 For light controlling device:   
 ![Schema1](https://github.com/hungdaqq/Smarthome-IoT/blob/main/Features/Kitchen/schema1.png)  
 For temperature sensor device:  
-![Schema2](https://github.com/hungdaqq/Smarthome-IoT/blob/main/Features/Kitchen/schema2.png)  
+![Schema2](https://github.com/hungdaqq/Smarthome-IoT/blob/main/Features/Kitchen/battery.png)  
 4. Navigate to the "Dashboard" tab and inport the `KitchenDashboard.json` template.
 5. Create `Device Allias` as `Single Entity` and choose the Devices which have been created at Step 1.
 6. Edit the datasource of each widgets/charts/tables.
