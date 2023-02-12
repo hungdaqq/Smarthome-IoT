@@ -18,7 +18,7 @@ In the kitchen, we will have a USB-powered MCU to control LED light and Buzzer a
 2. Replace `ESP8266/src` with each file in `Kitchen/src`, then upload the code to the corresponding MCU.
 3. Connect the parts in line with the following hardware schemas:  
 For light controlling device:   
-![Schema1](https://github.com/hungdaqq/Smarthome-IoT/blob/main/Features/Kitchen/schema1.png)  
+![Schema1](https://github.com/hungdaqq/Smarthome-IoT/blob/main/Features/Kitchen/schema.png)  
 For temperature sensor device:  
 ![Schema2](https://github.com/hungdaqq/Smarthome-IoT/blob/main/Features/Kitchen/battery.png)  
 4. Navigate to the "Dashboard" tab and inport the `KitchenDashboard.json` template.
