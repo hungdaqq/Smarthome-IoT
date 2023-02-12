@@ -15,7 +15,7 @@
 #define TOKEN "KitchenLight"
 // ThingsBoard server instance
 // Replace your TB Egde IP address
-#define THINGSBOARD_SERVER  "192.168.1.7" 
+#define THINGSBOARD_SERVER  "192.168.0.2" 
 
 
 WiFiClient wifiClient;         // Initialize ThingsBoard client
