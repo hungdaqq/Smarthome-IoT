@@ -9,6 +9,7 @@ PlatformIO is an open-source ecosystem for IoT development that can be used with
 3. Operating System: Windows, macOS, Linux, FreeBSD, Linux ARMv6+
 4. Python Interpreter: Python 3.6+ or above
 5. Access to Serial Ports (USB/UART)
+6. Important libraries: ThingsBoard (Arduino SDK), ArduinoJson, PubSubClient, DallasTemperature, OneWire, TM1637, Seeed_Arduino_mbedtls, Led4digit74HC595
 
 ## Getting Started
 
