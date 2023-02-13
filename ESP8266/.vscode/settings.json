@@ -1,6 +1,12 @@
 {
     "files.associations": {
         "cmath": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "string_view": "cpp"
     }
 }

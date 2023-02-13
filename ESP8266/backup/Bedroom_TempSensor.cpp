@@ -31,7 +31,7 @@ unsigned long sensorPeriod;
 // Initialize ThingsBoard client
 WiFiClient wifiClient;
 // Initialize ThingsBoard instance
-ThingsBoard tb(wifiClient);
+ThingsBoardSized<256> tb(wifiClient);
  
 int status = WL_IDLE_STATUS;
 
