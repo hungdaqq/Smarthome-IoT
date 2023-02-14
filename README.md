@@ -66,7 +66,7 @@ This project is aimed at creating a smart home system that can control various d
 <br />
 <div align="center">
   <a href="https://github.com/hungdaqq/Smarthome-IoT">
-    <img src="images/diagram.png" alt="Logo" width="800" height="630">
+    <img src="images/new_diagram.png" alt="Logo" width="800" height="630">
   </a>
 </div>
 <p align="justify">
