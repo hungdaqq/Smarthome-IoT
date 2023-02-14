@@ -61,6 +61,10 @@ This project is aimed at creating a smart home system that can control various d
 - User interface: Mobile application or browser.
 - Intranet control and Internet-based control.
 
+Project structure:
+- `ESP8266` is a brief explanation of how to use Platform.io to create a microcontroller programming environment.
+- `Thingsboard` contains template files for the Thingsboard Server configuration.
+- `Features` is where we demonstrate the features and capabilities of this Smart Home, as well as how to implement them using the provided code, hardware schema, and controller interface.
 <!-- GETTING STARTED -->
 ## Getting Started
 <br />
