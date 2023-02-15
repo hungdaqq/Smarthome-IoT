@@ -5,17 +5,17 @@
 #define COUNT_OF(x) ((sizeof(x)/sizeof(0[x])) / ((size_t)(!(sizeof(x) % sizeof(0[x])))))
 
 // Define AP Name and Password
-// #define WIFI_AP_NAME "MINH MUP_2.4G"
-// #define WIFI_PASSWORD "28051989"
-#define WIFI_AP_NAME "4H"
-#define WIFI_PASSWORD "88998899"
+#define WIFI_AP_NAME "MINH MUP_2.4G"
+#define WIFI_PASSWORD "28051989"
+// #define WIFI_AP_NAME "4H"
+// #define WIFI_PASSWORD "88998899"
 
 // See https://thingsboard.io/docs/getting-started-guides/helloworld/ 
 // to understand how to obtain an access token
 #define TOKEN "KitchenLight"
 // ThingsBoard server instance
 // Replace your TB Egde IP address
-#define THINGSBOARD_SERVER  "192.168.1.7" 
+#define THINGSBOARD_SERVER  "192.168.1.12" 
 
 
 WiFiClient wifiClient;         // Initialize ThingsBoard client
@@ -58,10 +58,23 @@ RPC_Response processGetState(const RPC_Data &data) {
   Serial.println("Received the get value method");
   return RPC_Response(NULL, LEDState);
 }
+
+RPC_Response enableState(const RPC_Data &data) {
+  Serial.println("Received the enable state RPC method");
+  // Process data
+  buzzerState = data;
+  Serial.print("Set new BUZZER state: ");
+  Serial.println(buzzerState);
+  tb.sendAttributeBool("buzzer", buzzerState);
+  Serial.println("Sent Client Attribute Buzzer data");
+  return RPC_Response(NULL, buzzerState);
+}
+
 // RPC handlers
 RPC_Callback callbacks[] = {
   { "setState",   processChangeState  },
   { "getState",   processGetState     },
+  { "enabled_buzzer", enableState     },
 };
 
 void reconnectWiFi() {

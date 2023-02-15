@@ -7,17 +7,17 @@ extern "C" {
 #include "ThingsBoard.h"
 #include <Led4digit74HC595.h>
 
-// #define WIFI_AP_NAME "MINH MUP_2.4G"
-// #define WIFI_PASSWORD "28051989"
-#define WIFI_AP_NAME "4H"
-#define WIFI_PASSWORD "88998899"
+#define WIFI_AP_NAME "MINH MUP_2.4G"
+#define WIFI_PASSWORD "28051989"
+// #define WIFI_AP_NAME "4H"
+// #define WIFI_PASSWORD "88998899"
 
 // This device access token
 #define TOKEN "BedroomTemperatureSensor"
 // ThingsBoard server instance.
 // Use "demo.thingsboard.io" to send data directly to Live Demo server
 // Use local IP Address of TB Edge to send data to Edge database
-char thingsboardServer[] = "192.168.1.7";
+char thingsboardServer[] = "192.168.1.12";
 
 // DS18B20 sensor data pin
 OneWire oneWire(D4);
@@ -31,7 +31,7 @@ unsigned long sensorPeriod;
 // Initialize ThingsBoard client
 WiFiClient wifiClient;
 // Initialize ThingsBoard instance
-ThingsBoard tb(wifiClient);
+ThingsBoardSized<256> tb(wifiClient);
  
 int status = WL_IDLE_STATUS;
 
@@ -124,7 +124,7 @@ void setup() {
   wifi_set_sleep_type(MODEM_SLEEP_T);
   timingLive = 0;
   // sensor cycle;
-  sensorPeriod = 100*1000; // 100 secs
+  sensorPeriod = 70*1000; // 70 secs
 }
 
 
