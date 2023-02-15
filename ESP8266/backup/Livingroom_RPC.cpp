@@ -5,14 +5,16 @@
 #define COUNT_OF(x) ((sizeof(x)/sizeof(0[x])) / ((size_t)(!(sizeof(x) % sizeof(0[x])))))
 
 // Define AP Name and Password
-#define WIFI_AP_NAME "4H"
-#define WIFI_PASSWORD "88998899"
+// #define WIFI_AP_NAME "4H"
+// #define WIFI_PASSWORD "88998899"
+#define WIFI_AP_NAME "MINH MUP_2.4G"
+#define WIFI_PASSWORD "28051989"
 
 // See https://thingsboard.io/docs/getting-started-guides/helloworld/ 
 // to understand how to obtain an access token
 #define TOKEN "LivingroomLight"
 // ThingsBoard server instance.
-#define THINGSBOARD_SERVER  "192.168.0.2"
+#define THINGSBOARD_SERVER  "192.168.1.12"
 
 
 WiFiClient wifiClient;         // Initialize ThingsBoard client

@@ -7,17 +7,17 @@ extern "C" {
 #include "ThingsBoard.h"
 #include <TM1637Display.h>
 
-// #define WIFI_AP_NAME "MINH MUP_2.4G"
-// #define WIFI_PASSWORD "28051989"
-#define WIFI_AP_NAME "4H"
-#define WIFI_PASSWORD "88998899"
+#define WIFI_AP_NAME "MINH MUP_2.4G"
+#define WIFI_PASSWORD "28051989"
+// #define WIFI_AP_NAME "4H"
+// #define WIFI_PASSWORD "88998899"
 
 // This device access token
 #define TOKEN "LivingroomTemperatureSensor"
 // ThingsBoard server instance.
 // Use "demo.thingsboard.io" to send data directly to Live Demo server
 // Use local IP Address of TB Edge to send data to Edge database
-char thingsboardServer[] = "192.168.0.2";
+char thingsboardServer[] = "192.168.1.12";
 
 // DS18B20 sensor data pin
 OneWire oneWire(D4);
@@ -126,7 +126,7 @@ void setup() {
   // timing = 0;
   // timingLive = 0;
   // sensor cycle;
-  sensorPeriod = 100*1000; // 100 secs
+  sensorPeriod = 70*1000; // 100 secs
 }
 
 
